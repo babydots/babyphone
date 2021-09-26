@@ -13,3 +13,6 @@
 .externalNativeBuild
 .cxx
 local.properties
+
+# Used for working files such as raw audio, audacity projects, etc.
+/scratch

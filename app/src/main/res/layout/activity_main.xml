@@ -10,46 +10,51 @@
         android:id="@+id/avatar"
         android:layout_width="128dp"
         android:layout_height="128dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
         android:src="@drawable/baby"
-        android:layout_marginTop="32dp"
-    />
+        app:layout_constraintBottom_toTopOf="@id/text_wrapper"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.49" />
 
-    <TextView
-        android:id="@+id/name"
+    <LinearLayout
+        android:id="@+id/text_wrapper"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@id/img_mic"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/avatar"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:text="Baby"
-        android:textSize="32sp"
-        android:layout_marginTop="32dp"
-        />
+        android:orientation="vertical"
+        android:gravity="center">
 
-    <TextView
-        android:id="@+id/time"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/name"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        tools:text="01:37"
-        android:textSize="16sp"
-        android:layout_marginTop="8dp"
-    />
+        <TextView
+            android:id="@+id/name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Baby"
+            android:textSize="32sp"/>
+
+        <TextView
+            android:id="@+id/time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="01:37"
+            android:textSize="16sp"
+            android:layout_marginTop="8dp"
+            />
+
+    </LinearLayout>
 
     <androidx.appcompat.widget.AppCompatImageButton
         android:layout_width="64dp"
         android:layout_height="64dp"
         android:scaleType="fitCenter"
         style="?android:attr/borderlessButtonStyle"
-        android:id="@+id/img_mute"
+        android:id="@+id/img_mic"
         android:src="@drawable/ic_mic_off"
         app:tint="?attr/colorControlNormal"
-        app:layout_constraintTop_toBottomOf="@id/time"
+        app:layout_constraintTop_toBottomOf="@id/text_wrapper"
         app:layout_constraintBottom_toTopOf="@id/hang_up"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toStartOf="@id/img_dialpad"
@@ -63,8 +68,8 @@
         android:id="@+id/img_dialpad"
         android:src="@drawable/ic_dialpad"
         app:tint="?attr/colorControlNormal"
-        app:layout_constraintTop_toTopOf="@id/img_mute"
-        app:layout_constraintStart_toEndOf="@id/img_mute"
+        app:layout_constraintTop_toTopOf="@id/img_mic"
+        app:layout_constraintStart_toEndOf="@id/img_mic"
         app:layout_constraintEnd_toStartOf="@id/img_speaker"
     />
 
@@ -76,7 +81,7 @@
         android:id="@+id/img_speaker"
         android:src="@drawable/ic_speaker"
         app:tint="?attr/colorControlNormal"
-        app:layout_constraintTop_toTopOf="@id/img_mute"
+        app:layout_constraintTop_toTopOf="@id/img_mic"
         app:layout_constraintStart_toEndOf="@id/img_dialpad"
         app:layout_constraintEnd_toEndOf="parent"
         />
@@ -89,7 +94,7 @@
         app:backgroundTint="@android:color/holo_red_light"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/img_mute"
+        app:layout_constraintTop_toBottomOf="@id/img_mic"
         app:layout_constraintBottom_toBottomOf="parent"
         android:layout_margin="16dp" />
 
