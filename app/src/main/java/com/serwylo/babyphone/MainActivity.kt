@@ -2,11 +2,13 @@ package com.serwylo.babyphone
 
 import android.media.MediaPlayer
 import android.os.Bundle
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.lifecycle.lifecycleScope
 import com.serwylo.babyphone.databinding.ActivityMainBinding
 import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 import kotlin.random.Random
 
 class MainActivity : AppCompatActivity() {
@@ -14,17 +16,17 @@ class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
 
     private var timer = 0
-    private var nextSoundTime = timer + queueNextSoundTime()
+    private var nextSoundTime = -1
 
-    private lateinit var sounds: List<MediaPlayer>
+    private lateinit var sounds: SoundLibrary
     private var currentSound: MediaPlayer? = null
 
-    private var isMuted = false
-
     companion object {
+
+        private const val TAG = "MainActivity"
+
         private fun queueNextSoundTime() = Random.nextInt(1, 4)
 
-        private fun pickNextSound(sounds: List<MediaPlayer>, current: MediaPlayer?) = sounds.filter { it !== current }.random()
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -36,34 +38,42 @@ class MainActivity : AppCompatActivity() {
 
         setContentView(binding.root)
 
-        sounds = listOf(
-            MediaPlayer.create(this, R.raw.babble_1),
-            MediaPlayer.create(this, R.raw.babble_2),
-            MediaPlayer.create(this, R.raw.babble_3),
-            MediaPlayer.create(this, R.raw.babble_4),
-            MediaPlayer.create(this, R.raw.babble_5),
-            MediaPlayer.create(this, R.raw.ball_1),
-            MediaPlayer.create(this, R.raw.bee_boo_1),
-            MediaPlayer.create(this, R.raw.longer_babble_1),
-            MediaPlayer.create(this, R.raw.longer_babble_2),
-        )
+        val context = this
 
-        lifecycleScope.launchWhenResumed {
-            currentSound?.start()
+        lifecycleScope.launch {
+            Log.d(TAG, "Loading sound files")
+            sounds = SoundLibrary()
+            sounds.load(context)
+
+            Log.d(TAG, "Queuing up the first sound effect.")
+            nextSoundTime = timer + queueNextSoundTime()
         }
 
         lifecycleScope.launchWhenResumed {
+            Log.d(TAG, "Starting timer to run in background (but will not start playing sounds until they are loaded).")
             while(true) {
                 delay(1000)
                 timer++
                 updateTimerLabel()
 
-                if (timer >= nextSoundTime) {
-                    currentSound = pickNextSound(sounds, currentSound).apply {
-                        start()
+                if (nextSoundTime > 0 && timer >= nextSoundTime) {
+                    currentSound = sounds.getRandomSound(currentSound).apply {
+                        Log.d(TAG, "Playing a new sound (and queueing up the next sound afterwards).")
                         nextSoundTime = timer + (duration / 1000) + queueNextSoundTime()
+                        start()
+                        this.setOnCompletionListener {
+                            Log.d(TAG, "Sound finished playing, setting to null.")
+                            currentSound = null
+                        }
                     }
                 }
+            }
+        }
+
+        lifecycleScope.launchWhenResumed {
+            currentSound?.let {
+                Log.d(TAG, "Resuming app, will resume existing sound.")
+                it.start()
             }
         }
 
@@ -75,11 +85,11 @@ class MainActivity : AppCompatActivity() {
     override fun onPause() {
         super.onPause()
 
-        currentSound?.apply {
-            if (currentPosition > 0) {
-                pause()
+        currentSound?.let {
+            if (it.isPlaying) {
+                it.pause()
             } else {
-                stop()
+                it.stop()
                 currentSound = null
             }
         }
@@ -88,9 +98,9 @@ class MainActivity : AppCompatActivity() {
     override fun onResume() {
         super.onResume()
 
-        currentSound?.apply {
-            if (currentPosition > 0) {
-                start()
+        currentSound?.let {
+            if (it.currentPosition > 0) {
+                it.start()
             }
         }
     }
