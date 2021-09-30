@@ -3,6 +3,8 @@ package com.serwylo.babyphone
 import android.media.MediaPlayer
 import android.os.Bundle
 import android.util.Log
+import android.view.MotionEvent
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.lifecycle.lifecycleScope
@@ -18,7 +20,8 @@ class MainActivity : AppCompatActivity() {
     private var timer = 0
     private var nextSoundTime = -1
 
-    private lateinit var sounds: SoundLibrary
+    private lateinit var sounds: RandomSoundLibrary
+    private lateinit var tones: ToneLibrary
     private var currentSound: MediaPlayer? = null
 
     companion object {
@@ -41,12 +44,32 @@ class MainActivity : AppCompatActivity() {
         val context = this
 
         lifecycleScope.launch {
-            Log.d(TAG, "Loading sound files")
-            sounds = SoundLibrary()
-            sounds.load(context)
+            launch {
+                Log.d(TAG, "Loading sound files")
+                sounds = RandomSoundLibrary.loadBabySounds(context)
 
-            Log.d(TAG, "Queuing up the first sound effect.")
-            nextSoundTime = timer + queueNextSoundTime()
+                Log.d(TAG, "Queuing up the first sound effect.")
+                nextSoundTime = timer + queueNextSoundTime()
+            }
+
+            launch {
+                tones = ToneLibrary()
+                tones.load(context)
+
+                val tonePlayer = { tone: MediaPlayer -> View.OnTouchListener { view, event ->
+                    if (event.action == MotionEvent.ACTION_DOWN) {
+                        tone.seekTo(0)
+                        tone.start()
+                        view.performClick()
+                    }
+                    true
+                } }
+
+                binding.imgDialpad.setOnTouchListener(tonePlayer(tones.getTone550()))
+                binding.imgMic.setOnTouchListener(tonePlayer(tones.getTone550()))
+                binding.imgSpeaker.setOnTouchListener(tonePlayer(tones.getTone550()))
+                binding.hangUp.setOnTouchListener(tonePlayer(tones.getTone450()))
+            }
         }
 
         lifecycleScope.launchWhenResumed {
