@@ -1,16 +1,112 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Theme.BabyPhone" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+    <style name="Theme.BabyPhone.Dark" parent="Theme.AppCompat">
+
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/purple_500</item>
         <item name="colorPrimaryVariant">@color/purple_700</item>
         <item name="colorOnPrimary">@color/white</item>
+
         <!-- Secondary brand color. -->
         <item name="colorSecondary">@color/teal_200</item>
         <item name="colorSecondaryVariant">@color/teal_700</item>
         <item name="colorOnSecondary">@color/black</item>
+
         <!-- Status bar color. -->
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
+
         <!-- Customize your theme here. -->
+        <item name="background">@color/grey_900</item>
+
+        <item name="textAppearanceName">@style/TextAppearance.Name</item>
+        <item name="textAppearanceBody">@style/TextAppearance.Body</item>
+
+        <item name="buttonBackground_1">@drawable/button_background_transparent</item>
+        <item name="buttonBackground_2">@drawable/button_background_transparent</item>
+        <item name="buttonBackground_3">@drawable/button_background_transparent</item>
+
+        <item name="avatarPadding">2dp</item>
+        <item name="avatarBackground">@drawable/avatar_background_dark</item>
+
+    </style>
+
+    <style name="Theme.BabyPhone.Light" parent="Theme.AppCompat.Light.DarkActionBar">
+
+        <!-- Primary brand color. -->
+        <item name="colorPrimary">@color/purple_500</item>
+        <item name="colorPrimaryVariant">@color/purple_700</item>
+        <item name="colorOnPrimary">@color/white</item>
+
+        <!-- Secondary brand color. -->
+        <item name="colorSecondary">@color/teal_200</item>
+        <item name="colorSecondaryVariant">@color/teal_700</item>
+        <item name="colorOnSecondary">@color/black</item>
+
+        <!-- Status bar color. -->
+        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
+
+        <!-- Customize your theme here. -->
+        <item name="background">@color/white</item>
+
+        <item name="textAppearanceName">@style/TextAppearance.Name</item>
+        <item name="textAppearanceBody">@style/TextAppearance.Body</item>
+
+        <item name="buttonBackground_1">@drawable/button_background_transparent</item>
+        <item name="buttonBackground_2">@drawable/button_background_transparent</item>
+        <item name="buttonBackground_3">@drawable/button_background_transparent</item>
+
+        <item name="avatarPadding">2dp</item>
+        <item name="avatarBackground">@drawable/avatar_background_light</item>
+
+    </style>
+
+    <!-- Cartoon theme. -->
+    <style name="Theme.BabyPhone.Colours" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <!-- Primary brand color. -->
+        <item name="colorPrimary">@color/purple_500</item>
+        <item name="colorPrimaryVariant">@color/purple_700</item>
+        <item name="colorOnPrimary">@color/white</item>
+
+        <!-- Secondary brand color. -->
+        <item name="colorSecondary">@color/teal_200</item>
+        <item name="colorSecondaryVariant">@color/teal_700</item>
+        <item name="colorOnSecondary">@color/black</item>
+
+        <!-- Status bar color. -->
+        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
+
+        <!-- Customize your theme here. -->
+        <item name="background">@color/purple_200</item>
+
+        <item name="buttonBackground_1">@drawable/button_background_colours_1</item>
+        <item name="buttonBackground_2">@drawable/button_background_colours_2</item>
+        <item name="buttonBackground_3">@drawable/button_background_colours_3</item>
+
+        <item name="textAppearanceName">@style/TextAppearance.Name.Colours</item>
+        <item name="textAppearanceBody">@style/TextAppearance.Body.Colours</item>
+
+        <item name="avatarPadding">10dp</item>
+        <item name="avatarBackground">@drawable/avatar_background_colours</item>
+
+    </style>
+
+    <style name="TextAppearance.Name" parent="TextAppearance.AppCompat.Large">
+        <item name="android:textSize">32sp</item>
+    </style>
+
+    <style name="TextAppearance.Body" parent="TextAppearance.AppCompat.Body1">
+        <item name="android:textSize">24sp</item>
+    </style>
+
+    <style name="TextAppearance.Name.Colours" parent="TextAppearance.Name">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">64sp</item>
+        <item name="android:fontFamily">@font/gloria_hallelujah</item>
+    </style>
+
+    <style name="TextAppearance.Body.Colours" parent="TextAppearance.Body">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">34sp</item>
+        <item name="android:fontFamily">@font/gloria_hallelujah</item>
     </style>
 </resources>
