@@ -14,12 +14,10 @@ Install this pretend phone app to let them listen and speak to another toddler a
 
 Still in early stages of development. Some ideas for future improvements include:
 
-* [Themeing (currently looks like a real phone, but a brightly coloured toy phone theme would also work well)](https://github.com/babydots/babyphone/issues/1).
 * [Multiple different people to choose from (currently just a single toddler)](https://github.com/babydots/babyphone/issues/2).
 * [Interactively listen to the microphone and only babble back when there is a period of silence](https://github.com/babydots/babyphone/issues/3).
 * [Record your own audio so your little ones can hear loved ones from their real family](https://github.com/babydots/babyphone/issues/4).
 * [Screen lock to prevent little fingers from unwittingy closing the app and accidentally causing trouble](https://github.com/babydots/babyphone/issues/5).
-* Interact with other phone buttons, such as the dial pad, mute button, etc.
 
 ## Contributing
 
