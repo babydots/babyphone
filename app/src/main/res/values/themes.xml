@@ -1,6 +1,6 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Theme.BabyPhone.Dark" parent="Theme.AppCompat">
+    <style name="Theme.BabyPhone.Dark" parent="Theme.AppCompat.NoActionBar">
 
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/purple_500</item>
@@ -28,9 +28,12 @@
         <item name="avatarPadding">2dp</item>
         <item name="avatarBackground">@drawable/avatar_background_dark</item>
 
+        <item name="homeActionBarTheme">@style/ThemeOverlay.MaterialComponents.Dark.ActionBar</item>
+        <item name="actionBarBackground">@color/purple_500</item>
+
     </style>
 
-    <style name="Theme.BabyPhone.Light" parent="Theme.AppCompat.Light.DarkActionBar">
+    <style name="Theme.BabyPhone.Light" parent="Theme.AppCompat.Light.NoActionBar">
 
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/purple_500</item>
@@ -58,10 +61,13 @@
         <item name="avatarPadding">2dp</item>
         <item name="avatarBackground">@drawable/avatar_background_light</item>
 
+        <item name="homeActionBarTheme">@style/ThemeOverlay.MaterialComponents.Dark.ActionBar</item>
+        <item name="actionBarBackground">@color/purple_500</item>
+
     </style>
 
     <!-- Cartoon theme. -->
-    <style name="Theme.BabyPhone.Colours" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+    <style name="Theme.BabyPhone.Colours" parent="Theme.MaterialComponents.Light.NoActionBar">
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/purple_500</item>
         <item name="colorPrimaryVariant">@color/purple_700</item>
@@ -87,6 +93,9 @@
 
         <item name="avatarPadding">10dp</item>
         <item name="avatarBackground">@drawable/avatar_background_colours</item>
+
+        <item name="homeActionBarTheme">@style/ThemeOverlay.MaterialComponents.Dark.ActionBar</item>
+        <item name="actionBarBackground">@color/green_200</item>
 
     </style>
 

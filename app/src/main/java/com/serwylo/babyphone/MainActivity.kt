@@ -1,8 +1,11 @@
 package com.serwylo.babyphone
 
+import android.content.Intent
 import android.media.MediaPlayer
 import android.os.Bundle
 import android.util.Log
+import android.view.Menu
+import android.view.MenuItem
 import android.view.MotionEvent
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
@@ -24,6 +27,8 @@ class MainActivity : AppCompatActivity() {
     private lateinit var tones: ToneLibrary
     private var currentSound: MediaPlayer? = null
 
+    private var currentTheme: String? = null
+
     companion object {
 
         private const val TAG = "MainActivity"
@@ -35,11 +40,14 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        currentTheme = ThemeManager.applyTheme(this)
+
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
 
         binding = ActivityMainBinding.inflate(layoutInflater)
 
         setContentView(binding.root)
+        setSupportActionBar(binding.toolbar)
 
         val context = this
 
@@ -101,8 +109,19 @@ class MainActivity : AppCompatActivity() {
         }
 
         updateTimerLabel()
+    }
 
-        supportActionBar?.hide()
+    override fun onPrepareOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.main_menu, menu)
+
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            R.id.menu_settings -> startActivity(Intent(this, SettingsActivity::class.java))
+        }
+        return super.onOptionsItemSelected(item)
     }
 
     override fun onPause() {
@@ -120,6 +139,17 @@ class MainActivity : AppCompatActivity() {
 
     override fun onResume() {
         super.onResume()
+
+        // Upon returning from settings, the user may hit the "Up" button in the toolbar (in which
+        // case the main splash screen will be recreated from scratch and themed appropriately in
+        // the onCreate() method), or via the "back" button, in which case we will get here.
+        //
+        // If the user pressed back, then we will check if they changed the theme from what we set
+        // it to originally during onCreate(), and if so, force the activity to be recreated (and
+        // hence rethemed).
+        if (!ThemeManager.getCurrentTheme().equals(currentTheme)) {
+            ThemeManager.forceRestartActivityToRetheme(this)
+        }
 
         currentSound?.let {
             if (it.currentPosition > 0) {
