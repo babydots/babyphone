@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <attr name="buttonBackground_1" format="reference" />
+    <attr name="buttonBackground_2" format="reference" />
+    <attr name="buttonBackground_3" format="reference" />
+    <attr name="textAppearanceName" format="reference" />
+    <attr name="textAppearanceBody" format="reference" />
+    <attr name="avatarPadding" format="dimension" />
+    <attr name="avatarBackground" format="reference" />
+    <attr name="actionBarBackground" format="reference" />
+    <attr name="homeActionBarTheme" format="reference" />
+</resources>
