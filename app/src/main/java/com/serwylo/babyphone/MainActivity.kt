@@ -13,6 +13,7 @@ import androidx.appcompat.app.AppCompatDelegate
 import androidx.lifecycle.lifecycleScope
 import com.serwylo.babyphone.databinding.ActivityMainBinding
 import kotlinx.coroutines.delay
+import kotlinx.coroutines.joinAll
 import kotlinx.coroutines.launch
 import kotlin.random.Random
 
@@ -24,8 +25,8 @@ class MainActivity : AppCompatActivity() {
     private var nextSoundTime = -1
 
     private lateinit var sounds: RandomSoundLibrary
-    private lateinit var tones: ToneLibrary
-    private var currentSound: MediaPlayer? = null
+    private var tone1: MediaPlayer? = null
+    private var tone2: MediaPlayer? = null
 
     private var currentTheme: String? = null
 
@@ -52,63 +53,56 @@ class MainActivity : AppCompatActivity() {
         val context = this
 
         lifecycleScope.launch {
-            launch {
-                Log.d(TAG, "Loading sound files")
-                sounds = RandomSoundLibrary.loadBabySounds(context)
 
-                Log.d(TAG, "Queuing up the first sound effect.")
-                nextSoundTime = timer + queueNextSoundTime()
-            }
+            listOf(
+                launch { tone1 = MediaPlayer.create(context, R.raw.tone_550) },
+                launch { tone2 = MediaPlayer.create(context, R.raw.tone_450) }
+            ).joinAll()
 
-            launch {
-                tones = ToneLibrary()
-                tones.load(context)
-
-                val tonePlayer = { tone: MediaPlayer -> View.OnTouchListener { view, event ->
-                    if (event.action == MotionEvent.ACTION_DOWN) {
+            val tonePlayer = { tone: MediaPlayer? -> View.OnTouchListener { view, event ->
+                if (event.action == MotionEvent.ACTION_DOWN) {
+                    if (tone == null) {
+                        Log.e(TAG, "Tone should not be null. Pressed ${context.resources.getResourceName(view.id)}")
+                    } else {
                         tone.seekTo(0)
                         tone.start()
-                        view.performClick()
                     }
-                    true
-                } }
+                    view.performClick()
+                }
+                true
+            } }
 
-                binding.imgDialpad.setOnTouchListener(tonePlayer(tones.getTone550()))
-                binding.imgMic.setOnTouchListener(tonePlayer(tones.getTone550()))
-                binding.imgSpeaker.setOnTouchListener(tonePlayer(tones.getTone550()))
-                binding.hangUp.setOnTouchListener(tonePlayer(tones.getTone450()))
-            }
+            binding.imgDialpad.setOnTouchListener(tonePlayer(tone1))
+            binding.imgMic.setOnTouchListener(tonePlayer(tone1))
+            binding.imgSpeaker.setOnTouchListener(tonePlayer(tone1))
+            binding.hangUp.setOnTouchListener(tonePlayer(tone2))
         }
 
         lifecycleScope.launchWhenResumed {
             Log.d(TAG, "Starting timer to run in background (but will not start playing sounds until they are loaded).")
             while(true) {
                 delay(1000)
-                timer++
-                updateTimerLabel()
-
-                if (nextSoundTime > 0 && timer >= nextSoundTime) {
-                    currentSound = sounds.getRandomSound(currentSound).apply {
-                        Log.d(TAG, "Playing a new sound (and queueing up the next sound afterwards).")
-                        nextSoundTime = timer + (duration / 1000) + queueNextSoundTime()
-                        start()
-                        this.setOnCompletionListener {
-                            Log.d(TAG, "Sound finished playing, setting to null.")
-                            currentSound = null
-                        }
-                    }
-                }
-            }
-        }
-
-        lifecycleScope.launchWhenResumed {
-            currentSound?.let {
-                Log.d(TAG, "Resuming app, will resume existing sound.")
-                it.start()
+                tick()
             }
         }
 
         updateTimerLabel()
+
+        sounds = RandomSoundLibrary(context, RandomSoundLibrary.babyTalk)
+
+        Log.d(TAG, "Queuing up the first sound effect.")
+        nextSoundTime = timer + queueNextSoundTime()
+    }
+
+    private fun tick() {
+        timer++
+        updateTimerLabel()
+
+        if (timer >= nextSoundTime && !sounds.isPlaying()) {
+            Log.d(TAG, "Playing a new sound (and queuing up the next sound afterward).")
+            val duration = sounds.playRandomSound()
+            nextSoundTime = timer + (duration / 1000) + queueNextSoundTime()
+        }
     }
 
     override fun onPrepareOptionsMenu(menu: Menu?): Boolean {
@@ -126,15 +120,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onPause() {
         super.onPause()
-
-        currentSound?.let {
-            if (it.isPlaying) {
-                it.pause()
-            } else {
-                it.stop()
-                currentSound = null
-            }
-        }
+        sounds.onPause()
     }
 
     override fun onResume() {
@@ -151,11 +137,7 @@ class MainActivity : AppCompatActivity() {
             ThemeManager.forceRestartActivityToRetheme(this)
         }
 
-        currentSound?.let {
-            if (it.currentPosition > 0) {
-                it.start()
-            }
-        }
+        sounds.onResume()
     }
 
     private fun updateTimerLabel() {

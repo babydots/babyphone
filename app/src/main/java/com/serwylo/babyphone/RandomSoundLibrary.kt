@@ -2,12 +2,15 @@ package com.serwylo.babyphone
 
 import android.content.Context
 import android.media.MediaPlayer
+import android.util.Log
 
-class RandomSoundLibrary(private val sounds: List<MediaPlayer>) {
+class RandomSoundLibrary(private val context: Context, private val soundResIds: List<Int>) {
 
     companion object {
 
-        private var babyTalk = listOf(
+        private const val TAG = "RandomSoundLibrary"
+
+        val babyTalk = listOf(
             R.raw.babble_1,
             R.raw.babble_2,
             R.raw.babble_3,
@@ -30,22 +33,50 @@ class RandomSoundLibrary(private val sounds: List<MediaPlayer>) {
             R.raw.uh_oh_1,
         )
 
-        suspend fun loadBabySounds(context: Context): RandomSoundLibrary {
-            return RandomSoundLibrary(loadSoundResources(context, babyTalk))
-        }
-
     }
 
-    fun getRandomSound(exclude: MediaPlayer? = null): MediaPlayer {
-        val toPickFrom = sounds.filter {
-            it !== exclude
+    private var currentSoundResId: Int? = null
+    private var currentSound: MediaPlayer? = null
+
+    /**
+     * Returns the duration of the sound which was picked.
+     */
+    fun playRandomSound(): Int {
+        val toPickFrom = soundResIds.filter { it != currentSoundResId }
+
+        currentSoundResId = toPickFrom.random().also { soundId ->
+            currentSound = MediaPlayer.create(context, soundId).also { sound ->
+                sound.start()
+                sound.setOnCompletionListener {
+                    Log.d(TAG, "Sound finished playing, setting to null.")
+                    currentSoundResId = null
+                    currentSound = null
+                }
+            }
         }
 
-        if (toPickFrom.isEmpty()) {
-            error("Sound library not yet loaded. Must call loadAsync() or loadSync() before getRandomSound().")
-        }
+        return currentSound?.duration ?: 0
+    }
 
-        return toPickFrom.random()
+    fun isPlaying() = currentSound != null
+
+    fun onPause() {
+        currentSound?.let { sound ->
+            if (sound.isPlaying) {
+                sound.pause()
+            } else {
+                sound.stop()
+                currentSoundResId = null
+                currentSound = null
+            }
+        }
+    }
+
+    fun onResume() {
+        currentSound?.let { sound ->
+            Log.d(TAG, "Resuming existing sound.")
+            sound.start()
+        }
     }
 
 }
