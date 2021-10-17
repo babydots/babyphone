@@ -12,6 +12,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.lifecycle.lifecycleScope
 import com.serwylo.babyphone.databinding.ActivityMainBinding
+import com.serwylo.immersivelock.ImmersiveLock
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.joinAll
 import kotlinx.coroutines.launch
@@ -30,6 +31,8 @@ class MainActivity : AppCompatActivity() {
 
     private var currentTheme: String? = null
 
+    private lateinit var immersiveLock: ImmersiveLock
+
     companion object {
 
         private const val TAG = "MainActivity"
@@ -46,6 +49,10 @@ class MainActivity : AppCompatActivity() {
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
 
         binding = ActivityMainBinding.inflate(layoutInflater)
+
+        immersiveLock = ImmersiveLock.Builder(binding.unlockWrapper)
+            .onStopImmersiveMode { binding.toolbar.visibility = View.VISIBLE }
+            .build()
 
         setContentView(binding.root)
         setSupportActionBar(binding.toolbar)
@@ -113,6 +120,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
+            R.id.menu_lock -> immersiveLock.startImmersiveMode(this)
             R.id.menu_settings -> startActivity(Intent(this, SettingsActivity::class.java))
         }
         return super.onOptionsItemSelected(item)
@@ -143,4 +151,5 @@ class MainActivity : AppCompatActivity() {
     private fun updateTimerLabel() {
         binding.time.text = "%d:%02d".format(timer / 60, timer % 60)
     }
+
 }

@@ -1,2 +1,3 @@
 rootProject.name = "Baby Phone"
 include ':app'
+include ':immersivelock'
