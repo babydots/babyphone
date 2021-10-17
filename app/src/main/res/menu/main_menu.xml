@@ -3,8 +3,15 @@
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
+        android:id="@+id/menu_lock"
+        android:icon="@drawable/ic_lock"
+        android:title="@string/lock"
+        app:showAsAction="always" />
+
+    <item
         android:id="@+id/menu_settings"
         android:icon="@drawable/ic_settings"
-        android:title="Settings"
-        app:showAsAction="always" />
+        android:title="@string/settings"
+        app:showAsAction="ifRoom" />
+
 </menu>

@@ -114,8 +114,40 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/img_mic"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/unlock_wrapper"
         android:layout_margin="16dp" />
+
+    <LinearLayout
+        android:id="@+id/unlock_wrapper"
+        android:visibility="gone"
+        tools:visibility="visible"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:orientation="horizontal"
+        android:padding="8dp"
+        android:layout_marginEnd="16dp"
+        android:gravity="center"
+        android:alpha="0.5"
+        android:layout_marginBottom="16dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/touch_to_unlock"
+            android:textSize="16sp"
+            android:layout_marginStart="8dp"
+            android:textColor="?android:textColorPrimary" />
+
+        <ImageView
+            android:layout_width="32dp"
+            android:layout_height="24dp"
+            android:src="@drawable/ic_lock"
+            tools:ignore="ContentDescription"
+            app:tint="?android:textColorPrimary" />
+
+    </LinearLayout>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

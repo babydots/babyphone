@@ -9,8 +9,9 @@
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
         <option name="modules">
           <set>
-            <option value="/media/big/code/babyphone" />
-            <option value="/media/big/code/babyphone/app" />
+            <option value="$PROJECT_DIR$" />
+            <option value="$PROJECT_DIR$/app" />
+            <option value="$PROJECT_DIR$/immersivelock" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />
