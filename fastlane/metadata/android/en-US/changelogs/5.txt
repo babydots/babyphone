@@ -1,0 +1,1 @@
+Fix to the baby lock: Hide the toolbar when locked.
