@@ -120,7 +120,10 @@ class MainActivity : AppCompatActivity() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
-            R.id.menu_lock -> immersiveLock.startImmersiveMode(this)
+            R.id.menu_lock -> {
+                immersiveLock.startImmersiveMode(this)
+                binding.toolbar.visibility = View.GONE
+            }
             R.id.menu_settings -> startActivity(Intent(this, SettingsActivity::class.java))
         }
         return super.onOptionsItemSelected(item)
