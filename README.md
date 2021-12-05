@@ -10,6 +10,10 @@ Does your little one like to talk to family and friends on the phone? Do they ge
 
 Install this pretend phone app to let them listen and speak to another toddler at the other end of the phone babbling back to them.
 
+[<img src="https://fdroid.gitlab.io/artwork/badge/get-it-on.png"
+     alt="Get it on F-Droid"
+     height="80">](https://f-droid.org/packages/com.serwylo.babyphone/)
+
 ## Roadmap
 
 Still in early stages of development. Some ideas for future improvements include:
