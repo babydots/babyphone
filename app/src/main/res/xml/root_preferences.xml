@@ -1,5 +1,17 @@
 <PreferenceScreen xmlns:app="http://schemas.android.com/apk/res-auto">
 
+    <PreferenceCategory app:title="@string/settings_category_phone">
+
+        <ListPreference
+            app:defaultValue="baby"
+            app:entries="@array/built_in_contacts_entries"
+            app:entryValues="@array/built_in_contacts_values"
+            app:key="contact"
+            app:title="@string/settings_contact"
+            app:useSimpleSummaryProvider="true" />
+
+    </PreferenceCategory>
+
     <PreferenceCategory app:title="@string/settings_category_display">
 
         <ListPreference

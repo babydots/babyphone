@@ -59,7 +59,7 @@ This program is Free Software: You can use, study share and improve it at your w
 
 * Photos:
   * [Baby photo adapted from Unsplash](https://unsplash.com/photos/tRSOnb_SBvk).
-  * [Mum photo adapted from Unsplash](https://unsplash.com/photos/ggAPxrb4Deg).
+  * [Mum photo adapted from RobbinHiggins on pixabay](https://pixabay.com/photos/surprised-woman-young-portrait-3355958/) used under the [pixabay license](https://pixabay.com/service/license/).
   * Icons, feature graphics, etc, created for this project.
 * Audio:
   * Created specifically for this project.

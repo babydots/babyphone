@@ -10,6 +10,7 @@ import android.view.MotionEvent
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
+import androidx.appcompat.content.res.AppCompatResources
 import androidx.lifecycle.lifecycleScope
 import com.serwylo.babyphone.databinding.ActivityMainBinding
 import com.serwylo.immersivelock.ImmersiveLock
@@ -25,7 +26,7 @@ class MainActivity : AppCompatActivity() {
     private var timer = 0
     private var nextSoundTime = -1
 
-    private lateinit var sounds: RandomSoundLibrary
+    private var contact: Contact? = null
     private var tone1: MediaPlayer? = null
     private var tone2: MediaPlayer? = null
 
@@ -95,20 +96,34 @@ class MainActivity : AppCompatActivity() {
 
         updateTimerLabel()
 
-        sounds = RandomSoundLibrary(context, RandomSoundLibrary.babyTalk)
-
         Log.d(TAG, "Queuing up the first sound effect.")
         nextSoundTime = timer + queueNextSoundTime()
+    }
+
+    /**
+     * If the currently loaded contact is different than what the preferences dictate, ensure
+     * we update the [contact].
+      */
+    private fun reloadContact(): Boolean {
+        val contactNameFromPrefs = ContactManager.getSelectedContactName(this)
+        if (contact?.name == contactNameFromPrefs) {
+            return false
+        }
+
+        contact = ContactManager.getContact(this, contactNameFromPrefs)
+        return true
     }
 
     private fun tick() {
         timer++
         updateTimerLabel()
 
-        if (timer >= nextSoundTime && !sounds.isPlaying()) {
-            Log.d(TAG, "Playing a new sound (and queuing up the next sound afterward).")
-            val duration = sounds.playRandomSound()
-            nextSoundTime = timer + (duration / 1000) + queueNextSoundTime()
+        contact?.let { contact ->
+            if (timer >= nextSoundTime && !contact.soundLibrary.isPlaying()) {
+                Log.d(TAG, "Playing a new sound (and queuing up the next sound afterward).")
+                val duration = contact.soundLibrary.playRandomSound()
+                nextSoundTime = timer + (duration / 1000) + queueNextSoundTime()
+            }
         }
     }
 
@@ -131,7 +146,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onPause() {
         super.onPause()
-        sounds.onPause()
+        contact?.soundLibrary?.onPause()
     }
 
     override fun onResume() {
@@ -148,7 +163,16 @@ class MainActivity : AppCompatActivity() {
             ThemeManager.forceRestartActivityToRetheme(this)
         }
 
-        sounds.onResume()
+        // If the contact was changed from the settings menu, then we will need to reload the
+        // contact and all of its associated data.
+        if (reloadContact()) {
+            contact?.let { contact ->
+                binding.avatar.setImageDrawable(AppCompatResources.getDrawable(this, contact.avatarDrawableId))
+                binding.name.text = contact.label
+            }
+        }
+
+        contact?.soundLibrary?.onResume()
     }
 
     private fun updateTimerLabel() {
