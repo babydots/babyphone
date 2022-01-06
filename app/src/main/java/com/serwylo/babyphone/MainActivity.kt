@@ -84,6 +84,11 @@ class MainActivity : AppCompatActivity() {
             binding.imgMic.setOnTouchListener(tonePlayer(tone1))
             binding.imgSpeaker.setOnTouchListener(tonePlayer(tone1))
             binding.hangUp.setOnTouchListener(tonePlayer(tone2))
+
+            binding.imgContacts.setOnTouchListener { view, event ->
+                tonePlayer(tone1).onTouch(view, event)
+                true
+            }
         }
 
         lifecycleScope.launchWhenResumed {

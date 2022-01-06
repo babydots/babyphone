@@ -65,13 +65,28 @@
         android:padding="12dp"
         android:scaleType="fitCenter"
         style="?android:attr/borderlessButtonStyle"
-        android:id="@+id/img_mic"
-        android:src="@drawable/ic_mic_off"
+        android:id="@+id/img_contacts"
+        android:src="@drawable/ic_contact"
         app:tint="?attr/colorControlNormal"
         android:background="?attr/buttonBackground_1"
         app:layout_constraintTop_toBottomOf="@id/text_wrapper"
         app:layout_constraintBottom_toTopOf="@id/hang_up"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/img_mic"
+        />
+
+    <androidx.appcompat.widget.AppCompatImageButton
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        android:padding="12dp"
+        android:scaleType="fitCenter"
+        style="?android:attr/borderlessButtonStyle"
+        android:id="@+id/img_mic"
+        android:src="@drawable/ic_mic_off"
+        app:tint="?attr/colorControlNormal"
+        android:background="?attr/buttonBackground_2"
+        app:layout_constraintTop_toTopOf="@id/img_contacts"
+        app:layout_constraintStart_toEndOf="@id/img_contacts"
         app:layout_constraintEnd_toStartOf="@id/img_dialpad"
         />
 
@@ -84,8 +99,8 @@
         android:id="@+id/img_dialpad"
         android:src="@drawable/ic_dialpad"
         app:tint="?attr/colorControlNormal"
-        android:background="?attr/buttonBackground_2"
-        app:layout_constraintTop_toTopOf="@id/img_mic"
+        android:background="?attr/buttonBackground_3"
+        app:layout_constraintTop_toTopOf="@id/img_contacts"
         app:layout_constraintStart_toEndOf="@id/img_mic"
         app:layout_constraintEnd_toStartOf="@id/img_speaker"
     />
@@ -99,8 +114,8 @@
         android:id="@+id/img_speaker"
         android:src="@drawable/ic_speaker"
         app:tint="?attr/colorControlNormal"
-        android:background="?attr/buttonBackground_3"
-        app:layout_constraintTop_toTopOf="@id/img_mic"
+        android:background="?attr/buttonBackground_1"
+        app:layout_constraintTop_toTopOf="@id/img_contacts"
         app:layout_constraintStart_toEndOf="@id/img_dialpad"
         app:layout_constraintEnd_toEndOf="parent"
         />
@@ -113,7 +128,7 @@
         app:backgroundTint="@android:color/holo_red_light"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/img_mic"
+        app:layout_constraintTop_toBottomOf="@id/img_contacts"
         app:layout_constraintBottom_toTopOf="@id/unlock_wrapper"
         android:layout_margin="16dp" />
 
