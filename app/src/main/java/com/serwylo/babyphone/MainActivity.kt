@@ -12,6 +12,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.appcompat.content.res.AppCompatResources
 import androidx.lifecycle.lifecycleScope
+import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.serwylo.babyphone.databinding.ActivityMainBinding
 import com.serwylo.immersivelock.ImmersiveLock
 import kotlinx.coroutines.delay
@@ -86,8 +87,13 @@ class MainActivity : AppCompatActivity() {
             binding.hangUp.setOnTouchListener(tonePlayer(tone2))
 
             binding.imgContacts.setOnTouchListener { view, event ->
-                tonePlayer(tone1).onTouch(view, event)
-                true
+                if (event.action != MotionEvent.ACTION_UP) {
+                    false
+                } else {
+                    tonePlayer(tone1).onTouch(view, event)
+                    showContactList()
+                    true
+                }
             }
         }
 
@@ -105,6 +111,16 @@ class MainActivity : AppCompatActivity() {
         nextSoundTime = timer + queueNextSoundTime()
     }
 
+    private fun showContactList() {
+        val list = ContactListFragment.newInstance(3)
+        list.show(supportFragmentManager, "contact-list")
+        list.onContactSelected { contact ->
+            ContactManager.setSelectedContact(this, contact)
+            reloadContact()
+            list.dismiss()
+        }
+    }
+
     /**
      * If the currently loaded contact is different than what the preferences dictate, ensure
      * we update the [contact].
@@ -115,7 +131,11 @@ class MainActivity : AppCompatActivity() {
             return false
         }
 
-        contact = ContactManager.getContact(this, contactNameFromPrefs)
+        contact = ContactManager.getContact(this, contactNameFromPrefs).also { contact ->
+            binding.avatar.setImageDrawable(AppCompatResources.getDrawable(this, contact.avatarDrawableId))
+            binding.name.text = contact.label
+        }
+
         return true
     }
 
@@ -168,14 +188,7 @@ class MainActivity : AppCompatActivity() {
             ThemeManager.forceRestartActivityToRetheme(this)
         }
 
-        // If the contact was changed from the settings menu, then we will need to reload the
-        // contact and all of its associated data.
-        if (reloadContact()) {
-            contact?.let { contact ->
-                binding.avatar.setImageDrawable(AppCompatResources.getDrawable(this, contact.avatarDrawableId))
-                binding.name.text = contact.label
-            }
-        }
+        reloadContact()
 
         contact?.soundLibrary?.onResume()
     }

@@ -60,6 +60,7 @@ This program is Free Software: You can use, study share and improve it at your w
 * Photos:
   * [Baby photo adapted from Unsplash](https://unsplash.com/photos/tRSOnb_SBvk).
   * [Mum photo adapted from RobbinHiggins on pixabay](https://pixabay.com/photos/surprised-woman-young-portrait-3355958/) used under the [pixabay license](https://pixabay.com/service/license/).
+  * [Dad photo adapted from Ludovic Migneault on Unsplash](https://unsplash.com/photos/5xbCj_VWKcs).
   * Icons, feature graphics, etc, created for this project.
 * Audio:
   * Created specifically for this project.
