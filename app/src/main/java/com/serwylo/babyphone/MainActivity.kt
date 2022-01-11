@@ -12,7 +12,6 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.appcompat.content.res.AppCompatResources
 import androidx.lifecycle.lifecycleScope
-import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.serwylo.babyphone.databinding.ActivityMainBinding
 import com.serwylo.immersivelock.ImmersiveLock
 import kotlinx.coroutines.delay
@@ -43,6 +42,15 @@ class MainActivity : AppCompatActivity() {
 
     }
 
+    private fun playTone(tone: MediaPlayer?) {
+        if (tone == null) {
+            Log.w(TAG, "Tried to play tone, but it was unexpectedly null. Perhaps we touched a button before the tone was loaded.")
+        } else {
+            tone.seekTo(0)
+            tone.start()
+        }
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -70,30 +78,32 @@ class MainActivity : AppCompatActivity() {
 
             val tonePlayer = { tone: MediaPlayer? -> View.OnTouchListener { view, event ->
                 if (event.action == MotionEvent.ACTION_DOWN) {
-                    if (tone == null) {
-                        Log.e(TAG, "Tone should not be null. Pressed ${context.resources.getResourceName(view.id)}")
-                    } else {
-                        tone.seekTo(0)
-                        tone.start()
-                    }
+                    playTone(tone)
                     view.performClick()
                 }
                 true
             } }
 
-            binding.imgDialpad.setOnTouchListener(tonePlayer(tone1))
+            binding.imgDialpad.setOnTouchListener { view, event ->
+                if (event.action == MotionEvent.ACTION_DOWN) {
+                    playTone(tone1)
+                    showDialPad()
+                    view.performClick()
+                }
+                true
+            }
+
             binding.imgMic.setOnTouchListener(tonePlayer(tone1))
             binding.imgSpeaker.setOnTouchListener(tonePlayer(tone1))
             binding.hangUp.setOnTouchListener(tonePlayer(tone2))
 
             binding.imgContacts.setOnTouchListener { view, event ->
-                if (event.action != MotionEvent.ACTION_DOWN) {
-                    false
-                } else {
+                if (event.action == MotionEvent.ACTION_DOWN) {
                     tonePlayer(tone1).onTouch(view, event)
                     showContactList()
-                    true
+                    view.performClick()
                 }
+                true
             }
         }
 
@@ -109,6 +119,12 @@ class MainActivity : AppCompatActivity() {
 
         Log.d(TAG, "Queuing up the first sound effect.")
         nextSoundTime = timer + queueNextSoundTime()
+    }
+
+    private fun showDialPad() {
+        val dialPad = DialPadFragment()
+        dialPad.show(supportFragmentManager, "contact-list")
+        dialPad.onButtonPressed { playTone(tone2) }
     }
 
     private fun showContactList() {
