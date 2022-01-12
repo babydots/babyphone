@@ -12,8 +12,8 @@ android {
         applicationId "com.serwylo.babyphone"
         minSdkVersion 22
         targetSdkVersion 30
-        versionCode 5
-        versionName "0.4.1"
+        versionCode 6
+        versionName "0.5.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -54,6 +54,9 @@ dependencies {
     implementation 'androidx.preference:preference:1.1.1'
 
     implementation project(':immersivelock')
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    implementation 'androidx.recyclerview:recyclerview:1.2.0'
+    implementation 'com.google.android.material:material:1.4.0'
 
     testImplementation 'junit:junit:4.13.2'
 

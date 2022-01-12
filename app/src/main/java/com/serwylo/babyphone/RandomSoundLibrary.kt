@@ -10,6 +10,25 @@ class RandomSoundLibrary(private val context: Context, private val soundResIds: 
 
         private const val TAG = "RandomSoundLibrary"
 
+        val mumTalk = listOf(
+            R.raw.mum_mmm_hmm,
+            R.raw.mum_oh_i_see,
+            R.raw.mum_really,
+            R.raw.mum_sounds_good,
+            R.raw.mum_tell_me_more,
+            R.raw.mum_uh_huh,
+            R.raw.mum_wow,
+            R.raw.mum_wow_2,
+        )
+
+        val dadTalk = listOf(
+            R.raw.dad_mmm,
+            R.raw.dad_oh_i_see,
+            R.raw.dad_uh_huh,
+            R.raw.dad_wow,
+            R.raw.dad_yeah,
+        )
+
         val babyTalk = listOf(
             R.raw.babble_1,
             R.raw.babble_2,

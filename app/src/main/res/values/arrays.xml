@@ -10,4 +10,19 @@
         <item>light</item>
         <item>dark</item>
     </string-array>
+
+    <string-array name="built_in_contacts_entries">
+        <item>@string/contact_baby</item>
+        <item>@string/contact_mum</item>
+        <item>@string/contact_dad</item>
+    </string-array>
+
+    <string-array name="built_in_contacts_values">
+        <item>baby</item>
+        <item>mum</item>
+        <item>dad</item>
+    </string-array>
+    <string name="contact_baby">Baby</string>
+    <string name="contact_mum">Mum</string>
+    <string name="contact_dad">Dad</string>
 </resources>

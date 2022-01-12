@@ -3,11 +3,8 @@ Does your little one like to talk to family and friends on the phone? Do they ge
 Install this pretend phone app to let them listen and speak to another toddler at the other end of the phone babbling back to them.
 
 Still in early stages of development. Some ideas for future improvements include:
-* Multiple different people to choose from (currently just a single toddler).
 * Record your own audio so your little ones can hear loved ones from their real family.
-* Screen lock to prevent little fingers from unwittingy closing the app and accidentally causing trouble.
 * Interactively listen to the microphone and only babble back when there is a period of silence.
-* Themeing (currently want it to look like a real phone, but perhaps a brightly coloured toy phone theme would work well).
 * Interact with other phone buttons, such as the dial pad, mute button, etc.
 
 Please support further development at GitHub sponsors or Liberapay.

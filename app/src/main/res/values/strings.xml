@@ -8,4 +8,6 @@
     <string name="theme_dark">Dark</string>
     <string name="theme_colours">Crazy rainbow</string>
     <string name="lock">Lock</string>
+    <string name="settings_category_phone">Phone</string>
+    <string name="settings_contact">Contact</string>
 </resources>
