@@ -22,7 +22,7 @@ object ContactManager {
                 Contact(
                     CONTACT_MUM,
                     context.getString(R.string.contact_mum),
-                    RandomSoundLibrary(context, RandomSoundLibrary.babyTalk),
+                    RandomSoundLibrary(context, RandomSoundLibrary.mumTalk),
                     R.drawable.mum,
                 )
 
