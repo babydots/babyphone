@@ -87,7 +87,7 @@ class MainActivity : AppCompatActivity() {
             binding.hangUp.setOnTouchListener(tonePlayer(tone2))
 
             binding.imgContacts.setOnTouchListener { view, event ->
-                if (event.action != MotionEvent.ACTION_UP) {
+                if (event.action != MotionEvent.ACTION_DOWN) {
                     false
                 } else {
                     tonePlayer(tone1).onTouch(view, event)

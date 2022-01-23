@@ -1,0 +1,7 @@
+Bugfix: Better touch handling for little fingers opening contacts.
+
+We noticed our toddler was holding down one part of the screen while trying to press
+the contacts button at the same time. They would also move their fingers while trying
+to press. This will now respond as soon as touched, not once the finger is lifted up.
+
+Please donate to support further development.
