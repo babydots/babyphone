@@ -5,6 +5,7 @@
       <map>
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.37083333333333335" />
         <entry key="app/src/main/res/layout/contact_item.xml" value="0.37135416666666665" />
+        <entry key="app/src/main/res/layout/contact_item_add.xml" value="0.45" />
         <entry key="app/src/main/res/layout/contact_item_list.xml" value="0.38385416666666666" />
         <entry key="app/src/main/res/layout/dial_pad.xml" value="0.37135416666666665" />
       </map>

@@ -18,12 +18,14 @@ import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 class ContactListFragment : BottomSheetDialogFragment() {
 
     private var columnCount = 2
+    private var canAdd = true
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         arguments?.let {
             columnCount = it.getInt(ARG_COLUMN_COUNT)
+            canAdd = it.getBoolean(ARG_CAN_ADD)
         }
     }
 
@@ -40,7 +42,7 @@ class ContactListFragment : BottomSheetDialogFragment() {
                     columnCount <= 1 -> LinearLayoutManager(context)
                     else -> GridLayoutManager(context, columnCount)
                 }
-                adapter = ContactListViewAdapter(context, ContactManager.getContacts(context)) { selectedContact ->
+                adapter = ContactListViewAdapter(context, ContactManager.getContacts(context), canAdd) { selectedContact ->
                     contactSelectedListener?.invoke(selectedContact)
                 }
             }
@@ -57,12 +59,14 @@ class ContactListFragment : BottomSheetDialogFragment() {
     companion object {
 
         const val ARG_COLUMN_COUNT = "column-count"
+        const val ARG_CAN_ADD = "can-add"
 
         @JvmStatic
-        fun newInstance(columnCount: Int) =
+        fun newInstance(columnCount: Int, canAdd: Boolean) =
             ContactListFragment().apply {
                 arguments = Bundle().apply {
                     putInt(ARG_COLUMN_COUNT, columnCount)
+                    putBoolean(ARG_CAN_ADD, canAdd)
                 }
             }
     }

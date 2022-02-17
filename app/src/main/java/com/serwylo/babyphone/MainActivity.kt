@@ -128,7 +128,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun showContactList() {
-        val list = ContactListFragment.newInstance(3)
+        val list = ContactListFragment.newInstance(3, !immersiveLock.inImmersiveMode())
         list.show(supportFragmentManager, "contact-list")
         list.onContactSelected { contact ->
             ContactManager.setSelectedContact(this, contact)
