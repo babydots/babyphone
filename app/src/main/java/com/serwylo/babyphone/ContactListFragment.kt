@@ -1,5 +1,6 @@
 package com.serwylo.babyphone
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
@@ -38,13 +39,19 @@ class ContactListFragment : BottomSheetDialogFragment() {
         // Set the adapter
         if (view is RecyclerView) {
             with(view) {
+
                 layoutManager = when {
                     columnCount <= 1 -> LinearLayoutManager(context)
                     else -> GridLayoutManager(context, columnCount)
                 }
-                adapter = ContactListViewAdapter(context, ContactManager.getContacts(context), canAdd) { selectedContact ->
-                    contactSelectedListener?.invoke(selectedContact)
-                }
+
+                adapter = ContactListViewAdapter(
+                    context,
+                    ContactManager.getContacts(context),
+                    { selectedContact -> contactSelectedListener?.invoke(selectedContact) },
+                    { startActivity(Intent(context, EditContactActivity::class.java)) },
+                )
+
             }
         }
         return view

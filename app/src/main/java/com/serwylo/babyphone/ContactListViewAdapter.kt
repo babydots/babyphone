@@ -3,6 +3,7 @@ package com.serwylo.babyphone
 import android.content.Context
 import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
+import android.view.MotionEvent
 import android.view.ViewGroup
 import androidx.appcompat.content.res.AppCompatResources
 import com.serwylo.babyphone.databinding.ContactItemAddBinding
@@ -18,8 +19,8 @@ import com.serwylo.babyphone.databinding.ContactItemBinding
 class ContactListViewAdapter(
     private val context: Context,
     private val contacts: List<Contact>,
-    private val canAdd: Boolean,
     private val onTouch: (contact: Contact) -> Unit,
+    private val onAdd: (() -> Unit)?,
 ) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     companion object {
@@ -51,7 +52,14 @@ class ContactListViewAdapter(
                         LayoutInflater.from(parent.context),
                         parent,
                         false
-                    )
+                    ).apply {
+                        root.setOnTouchListener { _, event ->
+                            if (event.action == MotionEvent.ACTION_DOWN) {
+                                onAdd?.invoke()
+                            }
+                            true
+                        }
+                    }
                 )
         }
 
@@ -72,7 +80,7 @@ class ContactListViewAdapter(
         }
     }
 
-    override fun getItemCount(): Int = contacts.size + if (canAdd) 1 else 0
+    override fun getItemCount(): Int = contacts.size + if (onAdd != null) 1 else 0
 
     inner class ViewHolder(val binding: ContactItemBinding) : RecyclerView.ViewHolder(binding.root)
 

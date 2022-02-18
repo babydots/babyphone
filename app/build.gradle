@@ -5,13 +5,13 @@ plugins {
 
 android {
 
-    compileSdkVersion 30
+    compileSdkVersion 31
     buildToolsVersion "30.0.3"
 
     defaultConfig {
         applicationId "com.serwylo.babyphone"
-        minSdkVersion 22
-        targetSdkVersion 30
+        minSdkVersion 23
+        targetSdkVersion 31
         versionCode 8
         versionName "0.6.0"
 

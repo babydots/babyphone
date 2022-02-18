@@ -12,7 +12,6 @@ class SettingsActivity : AppCompatActivity(), SharedPreferences.OnSharedPreferen
 
     override fun onCreate(savedInstanceState: Bundle?) {
 
-
         // Not sure why, but this has to come before super.onCreate(), or else the light theme
         // will have a dark background, making the text very hard to read. This seems to fix it,
         // though I have not investigated why. Source: https://stackoverflow.com/a/15657428.
@@ -32,7 +31,7 @@ class SettingsActivity : AppCompatActivity(), SharedPreferences.OnSharedPreferen
 
         setSupportActionBar(binding.toolbar)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
-        binding.toolbar.setNavigationOnClickListener { v -> NavUtils.navigateUpFromSameTask(this@SettingsActivity) }
+        binding.toolbar.setNavigationOnClickListener { NavUtils.navigateUpFromSameTask(this@SettingsActivity) }
     }
 
     override fun onResume() {

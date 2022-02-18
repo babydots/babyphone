@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".EditContactActivity"
+    android:animateLayoutChanges="true">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:background="?attr/actionBarBackground"
+        android:theme="?attr/homeActionBarTheme"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:elevation="5dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/name_input"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/photo"
+        app:layout_constraintTop_toBottomOf="@id/toolbar"
+        android:layout_marginTop="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:hint="Name"
+        >
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/photo"
+        android:layout_width="128dp"
+        android:layout_height="128dp"
+        android:src="@drawable/ic_person"
+        app:tint="@color/grey_400"
+        android:background="?attr/avatarBackground"
+        android:padding="?attr/avatarPadding"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintTop_toBottomOf="@id/toolbar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/name_input" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/take_photo"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        app:icon="@drawable/ic_photo"
+        app:iconSize="16dp"
+        android:padding="8dp"
+        android:layout_margin="?attr/avatarPaddingX2"
+        style="@style/Widget.App.Button.IconOnly"
+        app:layout_constraintEnd_toEndOf="@id/photo"
+        app:layout_constraintBottom_toBottomOf="@id/photo"
+        />
+
+    <!--<com.google.android.material.button.MaterialButton
+        android:id="@+id/record"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:icon="@drawable/ic_record"
+        android:text="Add Recording"
+        style="@style/Widget.App.Button.IconOnly"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/photo"
+        app:layout_constraintTop_toBottomOf="@id/name_input"
+        app:layout_constraintBottom_toTopOf="@id/sounds"
+        app:layout_constraintHorizontal_bias="0"
+        />-->
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/sounds"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/photo"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginTop="12dp"
+        tools:listitem="@layout/edit_contact_sound_item"
+        />
+
+    <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+        android:id="@+id/fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:icon="@drawable/ic_record"
+        android:text="Record"
+        android:layout_margin="24dp"
+        />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
