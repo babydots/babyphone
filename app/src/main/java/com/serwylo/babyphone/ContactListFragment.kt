@@ -10,7 +10,9 @@ import android.view.LayoutInflater
 import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.lifecycleScope
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
+import kotlinx.coroutines.launch
 
 /**
  * A fragment representing a list of [Contacts], similar to a normal "contact selector" page from
@@ -45,12 +47,14 @@ class ContactListFragment : BottomSheetDialogFragment() {
                     else -> GridLayoutManager(context, columnCount)
                 }
 
-                adapter = ContactListViewAdapter(
-                    context,
-                    ContactManager.getContacts(context),
-                    { selectedContact -> contactSelectedListener?.invoke(selectedContact) },
-                    { startActivity(Intent(context, EditContactActivity::class.java)) },
-                )
+                lifecycleScope.launch {
+                    val contacts = ContactManager.getContacts(context)
+                    adapter = ContactListViewAdapter(
+                        contacts,
+                        { selectedContact -> contactSelectedListener?.invoke(selectedContact) },
+                        { startActivity(Intent(context, EditContactActivity::class.java)) },
+                    )
+                }
 
             }
         }

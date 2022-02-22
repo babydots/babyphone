@@ -10,10 +10,10 @@ import android.view.MotionEvent
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
-import androidx.appcompat.content.res.AppCompatResources
 import androidx.lifecycle.lifecycleScope
 import com.serwylo.babyphone.databinding.ActivityMainBinding
 import com.serwylo.immersivelock.ImmersiveLock
+import com.squareup.picasso.Picasso
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.joinAll
 import kotlinx.coroutines.launch
@@ -147,9 +147,11 @@ class MainActivity : AppCompatActivity() {
             return false
         }
 
-        contact = ContactManager.getContact(this, contactNameFromPrefs).also { contact ->
-            binding.avatar.setImageDrawable(AppCompatResources.getDrawable(this, contact.avatarDrawableId))
-            binding.name.text = contact.label
+        lifecycleScope.launch {
+            contact = ContactManager.getContact(this@MainActivity, contactNameFromPrefs)?.also { contact ->
+                Picasso.get().load(contact.avatarPath).fit().centerCrop().into(binding.avatar)
+                binding.name.text = contact.label
+            }
         }
 
         return true

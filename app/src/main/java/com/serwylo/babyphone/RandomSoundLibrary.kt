@@ -2,13 +2,13 @@ package com.serwylo.babyphone
 
 import android.content.Context
 import android.media.MediaPlayer
+import android.net.Uri
 import android.util.Log
+import java.io.File
 
-class RandomSoundLibrary(private val context: Context, private val soundResIds: List<Int>) {
+class ResourceRandomSoundLibrary(context: Context, private val soundResIds: List<Int>) : RandomSoundLibrary<Int>(context, soundResIds) {
 
     companion object {
-
-        private const val TAG = "RandomSoundLibrary"
 
         val mumTalk = listOf(
             R.raw.mum_mmm_hmm,
@@ -54,21 +54,40 @@ class RandomSoundLibrary(private val context: Context, private val soundResIds: 
 
     }
 
-    private var currentSoundResId: Int? = null
+    override fun createMediaPlayer(context: Context, sound: Int): MediaPlayer = MediaPlayer.create(context, sound)
+
+
+}
+
+class RecordedRandomSoundLibrary(context: Context, soundFiles: List<File>): RandomSoundLibrary<File>(context, soundFiles) {
+    override fun createMediaPlayer(context: Context, sound: File): MediaPlayer = MediaPlayer.create(context, Uri.fromFile(sound))
+}
+
+abstract class RandomSoundLibrary<T>(private val context: Context, private val sounds: List<T>) {
+
+    companion object {
+
+        private const val TAG = "RandomSoundLibrary"
+
+    }
+
+    protected abstract fun createMediaPlayer(context: Context, sound: T): MediaPlayer
+
+    private var currentSoundReference: T? = null
     private var currentSound: MediaPlayer? = null
 
     /**
      * Returns the duration of the sound which was picked.
      */
     fun playRandomSound(): Int {
-        val toPickFrom = soundResIds.filter { it != currentSoundResId }
+        val toPickFrom = sounds.filter { it != currentSoundReference }
 
-        currentSoundResId = toPickFrom.random().also { soundId ->
-            currentSound = MediaPlayer.create(context, soundId).also { sound ->
+        currentSoundReference = toPickFrom.random().also { soundRef ->
+            currentSound = createMediaPlayer(context, soundRef).also { sound ->
                 sound.start()
                 sound.setOnCompletionListener {
                     Log.d(TAG, "Sound finished playing, setting to null.")
-                    currentSoundResId = null
+                    currentSoundReference = null
                     currentSound = null
                 }
             }
@@ -85,7 +104,7 @@ class RandomSoundLibrary(private val context: Context, private val soundResIds: 
                 sound.pause()
             } else {
                 sound.stop()
-                currentSoundResId = null
+                currentSoundReference = null
                 currentSound = null
             }
         }

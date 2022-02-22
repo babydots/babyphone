@@ -22,7 +22,7 @@
         android:id="@+id/avatar"
         android:layout_width="128dp"
         android:layout_height="128dp"
-        android:src="@drawable/baby"
+        tools:src="@tools:sample/avatars"
         android:background="?attr/avatarBackground"
         android:padding="?attr/avatarPadding"
         app:layout_constraintBottom_toTopOf="@id/text_wrapper"

@@ -1,43 +1,58 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="?android:attr/listPreferredItemHeight"
+    android:layout_height="wrap_content"
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:paddingStart="12dp"
-    android:paddingEnd="12dp">
+    android:paddingEnd="12dp"
+    android:paddingTop="6dp"
+    android:paddingBottom="6dp">
 
-    <androidx.appcompat.widget.AppCompatTextView
+    <!--
+    <com.masoudss.lib.WaveformSeekBar
+        android:id="@+id/waveform"
+        android:layout_height="0dp"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        tools:text="Sound 1"
+        android:layout_margin="8dp"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toStartOf="@id/delete"
-        android:layout_marginEnd="12dp"
-        android:textAppearance="?attr/textAppearanceBody1"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:wave_max_progress="100"
+        app:wave_width="5dp"
+        app:wave_gap="2dp"
+        app:wave_min_height="5dp"
+        app:wave_corner_radius="2dp"
+        app:wave_background_color="@color/white"
+        app:wave_progress_color="@color/black"
+        app:wave_gravity="center"
         />
+    -->
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/delete"
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="12dp"
+        app:iconTint="@color/red_800"
         app:icon="@drawable/ic_delete"
         style="@style/Widget.App.Button.OutlinedButton.IconOnly"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/play"
+        app:layout_constraintStart_toEndOf="@id/play"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/play"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:text="Play sound"
         app:icon="@drawable/ic_play"
         style="@style/Widget.App.Button.OutlinedButton.IconOnly"
+        android:layout_marginEnd="12dp"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/delete"
         app:layout_constraintBottom_toBottomOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

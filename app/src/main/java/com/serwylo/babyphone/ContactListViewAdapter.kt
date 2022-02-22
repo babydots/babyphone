@@ -9,6 +9,7 @@ import androidx.appcompat.content.res.AppCompatResources
 import com.serwylo.babyphone.databinding.ContactItemAddBinding
 
 import com.serwylo.babyphone.databinding.ContactItemBinding
+import com.squareup.picasso.Picasso
 
 /**
  * [RecyclerView.Adapter] that can display a [Contact].
@@ -17,7 +18,6 @@ import com.serwylo.babyphone.databinding.ContactItemBinding
  *               rather than "setup the app" time.
  */
 class ContactListViewAdapter(
-    private val context: Context,
     private val contacts: List<Contact>,
     private val onTouch: (contact: Contact) -> Unit,
     private val onAdd: (() -> Unit)?,
@@ -70,7 +70,7 @@ class ContactListViewAdapter(
             VIEW_TYPE_CONTACT -> {
                 val h = holder as ViewHolder
                 val contact = contacts[position]
-                h.binding.avatar.setImageDrawable(AppCompatResources.getDrawable(context, contact.avatarDrawableId))
+                Picasso.get().load(contact.avatarPath).fit().centerCrop().into(h.binding.avatar)
                 h.binding.name.text = contact.label
                 h.binding.root.setOnTouchListener { _, _ ->
                     onTouch(contact)
