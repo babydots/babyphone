@@ -19,6 +19,6 @@ data class Contact(
 
     val isDefault: Boolean = false,
 
-    @PrimaryKey
+    @PrimaryKey(autoGenerate = true)
     val id: Long = 0,
 )

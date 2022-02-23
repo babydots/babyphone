@@ -28,17 +28,17 @@
         </provider>
 
         <activity
-            android:name=".EditContactActivity"
+            android:name=".editcontact.EditContactActivity"
             android:exported="false"
             android:theme="@style/Theme.BabyPhone.Light"
-            android:parentActivityName=".MainActivity">
+            android:parentActivityName=".dialer.MainActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".MainActivity" />
+                android:value=".dialer.MainActivity" />
         </activity>
 
         <activity
-            android:name=".MainActivity"
+            android:name=".dialer.MainActivity"
             android:exported="true"
             >
             <intent-filter>
@@ -51,10 +51,10 @@
             android:name=".SettingsActivity"
             android:label="@string/settings"
             android:exported="false"
-            android:parentActivityName=".MainActivity">
+            android:parentActivityName=".dialer.MainActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".MainActivity" />
+                android:value=".dialer.MainActivity" />
         </activity>
     </application>
 

@@ -6,12 +6,14 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.serwylo.babyphone.db.entities.Contact
 import com.serwylo.babyphone.db.entities.Recording
+import com.serwylo.babyphone.db.entities.Settings
 import com.serwylo.babyphone.db.migrations.makeDatabaseSeeder
 
 @Database(
     entities = [
         Contact::class,
         Recording::class,
+        Settings::class,
     ],
     version = 1,
 )

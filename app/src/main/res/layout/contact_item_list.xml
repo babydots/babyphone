@@ -9,6 +9,6 @@
     android:layout_marginLeft="16dp"
     android:layout_marginRight="16dp"
     app:layoutManager="LinearLayoutManager"
-    tools:context=".ContactListFragment"
+    tools:context=".contactlist.ContactListFragment"
     android:background="?attr/background"
     tools:listitem="@layout/contact_item" />

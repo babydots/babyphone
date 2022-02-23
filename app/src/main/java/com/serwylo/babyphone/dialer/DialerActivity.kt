@@ -1,7 +1,8 @@
-package com.serwylo.babyphone
+package com.serwylo.babyphone.dialer
 
 import android.content.Intent
 import android.media.MediaPlayer
+import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import android.view.Menu
@@ -10,8 +11,14 @@ import android.view.MotionEvent
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
+import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
+import com.serwylo.babyphone.*
+import com.serwylo.babyphone.contactlist.ContactListFragment
 import com.serwylo.babyphone.databinding.ActivityMainBinding
+import com.serwylo.babyphone.db.AppDatabase
+import com.serwylo.babyphone.db.ContactRepository
+import com.serwylo.babyphone.db.entities.Contact
 import com.serwylo.immersivelock.ImmersiveLock
 import com.squareup.picasso.Picasso
 import kotlinx.coroutines.delay
@@ -21,12 +28,14 @@ import kotlin.random.Random
 
 class MainActivity : AppCompatActivity() {
 
+    private lateinit var viewModel: DialerViewModel
     private lateinit var binding: ActivityMainBinding
+    private lateinit var repository: ContactRepository
+    private var soundLibrary: RandomSoundLibrary? = null
 
     private var timer = 0
     private var nextSoundTime = -1
 
-    private var contact: Contact? = null
     private var tone1: MediaPlayer? = null
     private var tone2: MediaPlayer? = null
 
@@ -56,6 +65,13 @@ class MainActivity : AppCompatActivity() {
 
         currentTheme = ThemeManager.applyTheme(this)
 
+        repository = ContactRepository(this, AppDatabase.getInstance(this).contactDao())
+
+        viewModel = ViewModelProvider(
+            this,
+            DialerViewModelFactory(AppDatabase.getInstance(this).contactDao())
+        ).get(DialerViewModel::class.java)
+
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
 
         binding = ActivityMainBinding.inflate(layoutInflater)
@@ -66,6 +82,14 @@ class MainActivity : AppCompatActivity() {
 
         setContentView(binding.root)
         setSupportActionBar(binding.toolbar)
+
+        viewModel.contact.observe(this) { contact ->
+            if (contact != null) {
+                bindContact(contact.contact)
+                soundLibrary?.onPause()
+                soundLibrary = RandomSoundLibrary(this, contact.sounds.map { Uri.parse(it.soundFilePath) })
+            }
+        }
 
         val context = this
 
@@ -128,43 +152,35 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun showContactList() {
-        val list = ContactListFragment.newInstance(3, !immersiveLock.inImmersiveMode())
+        val list = ContactListFragment.newInstance(!immersiveLock.inImmersiveMode())
         list.show(supportFragmentManager, "contact-list")
         list.onContactSelected { contact ->
-            ContactManager.setSelectedContact(this, contact)
-            reloadContact()
+
+            lifecycleScope.launch { repository.selectContact(contact) }
+
+            // No need to update the view, because the LiveData<Contact> will do this in response
+            // to changing the selected contact.
+
             list.dismiss()
+
         }
     }
 
-    /**
-     * If the currently loaded contact is different than what the preferences dictate, ensure
-     * we update the [contact].
-      */
-    private fun reloadContact(): Boolean {
-        val contactNameFromPrefs = ContactManager.getSelectedContactName(this)
-        if (contact?.name == contactNameFromPrefs) {
-            return false
+    private fun bindContact(contact: Contact) {
+        binding.name.text = contact.name
+        if (contact.avatarPath.isNotEmpty()) {
+            Picasso.get().load(contact.avatarPath).fit().centerCrop().into(binding.avatar)
         }
-
-        lifecycleScope.launch {
-            contact = ContactManager.getContact(this@MainActivity, contactNameFromPrefs)?.also { contact ->
-                Picasso.get().load(contact.avatarPath).fit().centerCrop().into(binding.avatar)
-                binding.name.text = contact.label
-            }
-        }
-
-        return true
     }
 
     private fun tick() {
         timer++
         updateTimerLabel()
 
-        contact?.let { contact ->
-            if (timer >= nextSoundTime && !contact.soundLibrary.isPlaying()) {
+        soundLibrary?.let { library ->
+            if (timer >= nextSoundTime && !library.isPlaying()) {
                 Log.d(TAG, "Playing a new sound (and queuing up the next sound afterward).")
-                val duration = contact.soundLibrary.playRandomSound()
+                val duration = library.playRandomSound()
                 nextSoundTime = timer + (duration / 1000) + queueNextSoundTime()
             }
         }
@@ -189,7 +205,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onPause() {
         super.onPause()
-        contact?.soundLibrary?.onPause()
+        soundLibrary?.onPause()
     }
 
     override fun onResume() {
@@ -206,9 +222,7 @@ class MainActivity : AppCompatActivity() {
             ThemeManager.forceRestartActivityToRetheme(this)
         }
 
-        reloadContact()
-
-        contact?.soundLibrary?.onResume()
+        soundLibrary?.onResume()
     }
 
     private fun updateTimerLabel() {

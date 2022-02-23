@@ -1,4 +1,4 @@
-package com.serwylo.babyphone
+package com.serwylo.babyphone.contactlist
 
 import android.content.Context
 import androidx.recyclerview.widget.RecyclerView
@@ -9,6 +9,7 @@ import androidx.appcompat.content.res.AppCompatResources
 import com.serwylo.babyphone.databinding.ContactItemAddBinding
 
 import com.serwylo.babyphone.databinding.ContactItemBinding
+import com.serwylo.babyphone.db.entities.Contact
 import com.squareup.picasso.Picasso
 
 /**
@@ -18,14 +19,20 @@ import com.squareup.picasso.Picasso
  *               rather than "setup the app" time.
  */
 class ContactListViewAdapter(
-    private val contacts: List<Contact>,
     private val onTouch: (contact: Contact) -> Unit,
     private val onAdd: (() -> Unit)?,
 ) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
+    private var contacts: List<Contact> = emptyList()
+
     companion object {
         const val VIEW_TYPE_CONTACT = 1
         const val VIEW_TYPE_ADD = 2
+    }
+
+    fun setContacts(contacts: List<Contact>) {
+        this.contacts = contacts
+        notifyDataSetChanged()
     }
 
     override fun getItemViewType(position: Int): Int {
@@ -70,8 +77,12 @@ class ContactListViewAdapter(
             VIEW_TYPE_CONTACT -> {
                 val h = holder as ViewHolder
                 val contact = contacts[position]
-                Picasso.get().load(contact.avatarPath).fit().centerCrop().into(h.binding.avatar)
-                h.binding.name.text = contact.label
+
+                if (contact.avatarPath.isNotEmpty()) {
+                    Picasso.get().load(contact.avatarPath).fit().centerCrop().into(h.binding.avatar)
+                }
+
+                h.binding.name.text = contact.name
                 h.binding.root.setOnTouchListener { _, _ ->
                     onTouch(contact)
                     true

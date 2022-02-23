@@ -25,6 +25,6 @@ data class Recording(
      */
     val soundFilePath: String,
 
-    @PrimaryKey
+    @PrimaryKey(autoGenerate = true)
     val id: Long = 0,
 )

@@ -1,79 +1,37 @@
 package com.serwylo.babyphone
 
 import android.content.Context
+import android.content.res.AssetFileDescriptor
 import android.media.MediaPlayer
 import android.net.Uri
 import android.util.Log
+import com.serwylo.babyphone.db.entities.Recording
 import java.io.File
 
-class ResourceRandomSoundLibrary(context: Context, private val soundResIds: List<Int>) : RandomSoundLibrary<Int>(context, soundResIds) {
+private const val LOG_TAG = "RandomSoundLibrary"
 
-    companion object {
+class RandomSoundLibrary(private val context: Context, private val sounds: List<Uri>) {
 
-        val mumTalk = listOf(
-            R.raw.mum_mmm_hmm,
-            R.raw.mum_oh_i_see,
-            R.raw.mum_really,
-            R.raw.mum_sounds_good,
-            R.raw.mum_tell_me_more,
-            R.raw.mum_uh_huh,
-            R.raw.mum_wow,
-            R.raw.mum_wow_2,
-        )
+    private fun createMediaPlayer(sound: Uri): MediaPlayer {
+        val path = sound.path ?: ""
+        return if (path.startsWith("/android_asset/")) {
 
-        val dadTalk = listOf(
-            R.raw.dad_mmm,
-            R.raw.dad_oh_i_see,
-            R.raw.dad_uh_huh,
-            R.raw.dad_wow,
-            R.raw.dad_yeah,
-        )
-
-        val babyTalk = listOf(
-            R.raw.babble_1,
-            R.raw.babble_2,
-            R.raw.babble_3,
-            R.raw.babble_baby_1,
-            R.raw.babble_baby_2,
-            R.raw.babble_misc,
-            R.raw.ball,
-            R.raw.ball_bee_boo,
-            R.raw.bee_boo,
-            R.raw.hey_babble,
-            R.raw.hey_babble_2,
-            R.raw.hey_babble_3,
-            R.raw.hey_babble_4,
-            R.raw.hey_babble_5,
-            R.raw.hey_babble_6,
-            R.raw.poo_poo_poo,
-            R.raw.poo_poo_sss,
-            R.raw.quiet_babble,
-            R.raw.squeal,
-            R.raw.uh_oh_1,
-        )
-
+            // https://stackoverflow.com/questions/3289038/play-audio-file-from-the-assets-directory
+            context.assets.openFd(path.substring("/android_asset/".length)).use { assetDescriptor ->
+                MediaPlayer().also { mediaPlayer ->
+                    mediaPlayer.setDataSource(
+                        assetDescriptor.fileDescriptor,
+                        assetDescriptor.startOffset,
+                        assetDescriptor.length
+                    )
+                }
+            }
+        } else {
+            MediaPlayer.create(context, sound)
+        }
     }
 
-    override fun createMediaPlayer(context: Context, sound: Int): MediaPlayer = MediaPlayer.create(context, sound)
-
-
-}
-
-class RecordedRandomSoundLibrary(context: Context, soundFiles: List<File>): RandomSoundLibrary<File>(context, soundFiles) {
-    override fun createMediaPlayer(context: Context, sound: File): MediaPlayer = MediaPlayer.create(context, Uri.fromFile(sound))
-}
-
-abstract class RandomSoundLibrary<T>(private val context: Context, private val sounds: List<T>) {
-
-    companion object {
-
-        private const val TAG = "RandomSoundLibrary"
-
-    }
-
-    protected abstract fun createMediaPlayer(context: Context, sound: T): MediaPlayer
-
-    private var currentSoundReference: T? = null
+    private var currentSoundReference: Uri? = null
     private var currentSound: MediaPlayer? = null
 
     /**
@@ -82,11 +40,15 @@ abstract class RandomSoundLibrary<T>(private val context: Context, private val s
     fun playRandomSound(): Int {
         val toPickFrom = sounds.filter { it != currentSoundReference }
 
+        if (toPickFrom.isEmpty()) {
+            return 0
+        }
+
         currentSoundReference = toPickFrom.random().also { soundRef ->
-            currentSound = createMediaPlayer(context, soundRef).also { sound ->
+            currentSound = createMediaPlayer(soundRef).also { sound ->
                 sound.start()
                 sound.setOnCompletionListener {
-                    Log.d(TAG, "Sound finished playing, setting to null.")
+                    Log.d(LOG_TAG, "Sound finished playing, setting to null.")
                     currentSoundReference = null
                     currentSound = null
                 }
@@ -112,7 +74,7 @@ abstract class RandomSoundLibrary<T>(private val context: Context, private val s
 
     fun onResume() {
         currentSound?.let { sound ->
-            Log.d(TAG, "Resuming existing sound.")
+            Log.d(LOG_TAG, "Resuming existing sound.")
             sound.start()
         }
     }

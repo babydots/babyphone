@@ -6,7 +6,7 @@
     android:background="?attr/background"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".dialer.MainActivity">
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btn_1"
