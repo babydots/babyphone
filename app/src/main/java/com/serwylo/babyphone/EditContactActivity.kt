@@ -26,6 +26,7 @@ import androidx.appcompat.content.res.AppCompatResources
 import androidx.core.app.ActivityCompat
 import androidx.core.app.NavUtils
 import androidx.core.content.FileProvider
+import androidx.core.widget.addTextChangedListener
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -95,6 +96,10 @@ class EditContactActivity : AppCompatActivity() {
         adapter = SoundAdapter(this)
         binding.sounds.adapter = adapter
         binding.sounds.layoutManager = LinearLayoutManager(this)
+
+        binding.nameInput.addTextChangedListener {
+            File(contactDir, "name.txt").writeText(it?.toString() ?: "")
+        }
 
         maybeShowPhoto()
 
