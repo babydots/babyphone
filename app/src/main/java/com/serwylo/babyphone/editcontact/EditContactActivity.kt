@@ -50,6 +50,10 @@ class EditContactActivity : AppCompatActivity() {
     private var permissionToRecordAccepted = false
     private var permissions: Array<String> = arrayOf(Manifest.permission.RECORD_AUDIO)
 
+    companion object {
+        const val CONTACT_ID = "contactId"
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
 
         // Not sure why, but this has to come before super.onCreate(), or else the light theme
@@ -61,9 +65,10 @@ class EditContactActivity : AppCompatActivity() {
 
         binding = ActivityEditContactBinding.inflate(layoutInflater)
 
+        val contactId = intent.extras?.getLong(CONTACT_ID) ?: 0L
         viewModel = ViewModelProvider(
             this,
-            EditContactViewModelFactory(this, AppDatabase.getInstance(this).contactDao())
+            EditContactViewModelFactory(this, AppDatabase.getInstance(this).contactDao(), contactId)
         ).get(EditContactViewModel::class.java)
 
         viewModel.isLoading.observe(this) { isLoading ->

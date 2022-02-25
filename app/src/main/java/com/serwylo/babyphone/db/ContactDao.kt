@@ -19,11 +19,17 @@ interface ContactDao {
     @Query("SELECT * FROM Contact WHERE id = (SELECT currentContactId FROM settings LIMIT 0, 1)")
     fun getCurrentContact(): LiveData<ContactWithSounds>
 
+    @Query("SELECT currentContactId FROM settings LIMIT 0, 1")
+    suspend fun getCurrentContactId(): Long
+
     @Query("SELECT * FROM Recording WHERE contactId = :contactId")
     fun getRecordingsForContact(contactId: Long): LiveData<List<Recording>>
 
     @Query("UPDATE Settings SET currentContactId = :id")
     fun changeCurrentContact(id: Long)
+
+    @Query("UPDATE Settings SET currentContactId = (SELECT id FROM Contact WHERE isEnabled = 1 LIMIT 0, 1)")
+    fun pickNewCurrentContact()
 
     @Query("SELECT * FROM Contact WHERE id = :id")
     fun getContact(id: Long): Contact

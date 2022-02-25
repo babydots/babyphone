@@ -1,12 +1,15 @@
 package com.serwylo.babyphone
 
+import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.NavUtils
+import androidx.preference.Preference
 import androidx.preference.PreferenceFragmentCompat
 import androidx.preference.PreferenceManager
 import com.serwylo.babyphone.databinding.SettingsActivityBinding
+import com.serwylo.babyphone.settingscontactlist.SettingsContactListActivity
 
 class SettingsActivity : AppCompatActivity(), SharedPreferences.OnSharedPreferenceChangeListener  {
 
@@ -46,17 +49,22 @@ class SettingsActivity : AppCompatActivity(), SharedPreferences.OnSharedPreferen
         super.onPause()
     }
 
-    class SettingsFragment : PreferenceFragmentCompat() {
-        override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
-            setPreferencesFromResource(R.xml.root_preferences, rootKey)
-        }
-    }
-
     override fun onSharedPreferenceChanged(sharedPreferences: SharedPreferences?, key: String?) {
         if (ThemeManager.PREFERENCE_NAME == key) {
             ThemeManager.rememberTheme(this)
             ThemeManager.applyTheme(this)
             ThemeManager.forceRestartActivityToRetheme(this)
+        }
+    }
+}
+
+class SettingsFragment : PreferenceFragmentCompat() {
+    override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
+        setPreferencesFromResource(R.xml.root_preferences, rootKey)
+
+        findPreference<Preference>("contacts")?.onPreferenceClickListener = Preference.OnPreferenceClickListener {
+            startActivity(Intent(requireContext(), SettingsContactListActivity::class.java))
+            true
         }
     }
 }

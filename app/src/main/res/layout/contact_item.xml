@@ -11,7 +11,7 @@
         android:id="@+id/avatar"
         android:layout_width="72dp"
         android:layout_height="72dp"
-        tools:src="@drawable/baby"
+        tools:src="@tools:sample/avatars"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

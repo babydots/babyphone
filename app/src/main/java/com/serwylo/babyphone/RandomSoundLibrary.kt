@@ -46,6 +46,7 @@ class RandomSoundLibrary(private val context: Context, private val sounds: List<
 
         currentSoundReference = toPickFrom.random().also { soundRef ->
             currentSound = createMediaPlayer(soundRef).also { sound ->
+                sound.prepare()
                 sound.start()
                 sound.setOnCompletionListener {
                     Log.d(LOG_TAG, "Sound finished playing, setting to null.")

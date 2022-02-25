@@ -21,7 +21,6 @@ class ContactListFragment : BottomSheetDialogFragment() {
 
     private lateinit var viewModel: ContactListViewModel
     private var columnCount = 3
-    private var canAdd = true
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,10 +29,6 @@ class ContactListFragment : BottomSheetDialogFragment() {
             this,
             ContactListViewModelFactory(AppDatabase.getInstance(requireContext()).contactDao())
         ).get(ContactListViewModel::class.java)
-
-        arguments?.let {
-            canAdd = it.getBoolean(ARG_CAN_ADD)
-        }
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -44,7 +39,6 @@ class ContactListFragment : BottomSheetDialogFragment() {
 
         binding.list.adapter = ContactListViewAdapter(
             { selectedContact -> contactSelectedListener?.invoke(selectedContact) },
-            { startActivity(Intent(context, EditContactActivity::class.java)) },
         ).also { adapter ->
 
             viewModel.contacts.observe(this) { contacts ->
@@ -61,18 +55,5 @@ class ContactListFragment : BottomSheetDialogFragment() {
 
     fun onContactSelected(listener: ((contact: Contact) -> Unit)?) {
         contactSelectedListener = listener
-    }
-
-    companion object {
-
-        const val ARG_CAN_ADD = "can-add"
-
-        @JvmStatic
-        fun newInstance(canAdd: Boolean) =
-            ContactListFragment().apply {
-                arguments = Bundle().apply {
-                    putBoolean(ARG_CAN_ADD, canAdd)
-                }
-            }
     }
 }

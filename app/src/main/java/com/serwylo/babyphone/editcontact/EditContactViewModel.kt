@@ -189,11 +189,11 @@ class EditContactViewModel(private val context: Context, private val dao: Contac
 
 }
 
-class EditContactViewModelFactory(private val context: Context, private val dao: ContactDao) : ViewModelProvider.Factory {
+class EditContactViewModelFactory(private val context: Context, private val dao: ContactDao, private val contactId: Long) : ViewModelProvider.Factory {
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
         if (modelClass.isAssignableFrom(EditContactViewModel::class.java)) {
             @Suppress("UNCHECKED_CAST")
-            return EditContactViewModel(context.applicationContext, dao) as T
+            return EditContactViewModel(context.applicationContext, dao, contactId) as T
         }
         throw IllegalArgumentException("Unknown ViewModel class")
     }

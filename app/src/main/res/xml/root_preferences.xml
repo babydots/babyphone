@@ -2,13 +2,10 @@
 
     <PreferenceCategory app:title="@string/settings_category_phone">
 
-        <ListPreference
-            app:defaultValue="baby"
-            app:entries="@array/built_in_contacts_entries"
-            app:entryValues="@array/built_in_contacts_values"
-            app:key="contact"
-            app:title="@string/settings_contact"
-            app:useSimpleSummaryProvider="true" />
+        <Preference
+            app:title="Contacts"
+            app:key="contacts"
+            app:summary="Add or edit your list of contacts" />
 
     </PreferenceCategory>
 

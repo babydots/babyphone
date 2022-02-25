@@ -10,6 +10,7 @@
         <entry key="app/src/main/res/layout/activity_contact_detail.xml" value="0.20052083333333334" />
         <entry key="app/src/main/res/layout/activity_edit_contact.xml" value="0.335" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.37083333333333335" />
+        <entry key="app/src/main/res/layout/activity_settings_contact_list.xml" value="0.359375" />
         <entry key="app/src/main/res/layout/contact_item.xml" value="0.37135416666666665" />
         <entry key="app/src/main/res/layout/contact_item_add.xml" value="0.45" />
         <entry key="app/src/main/res/layout/contact_item_list.xml" value="0.38385416666666666" />
@@ -18,11 +19,15 @@
         <entry key="app/src/main/res/layout/edit_contact_sound_item.xml" value="0.375" />
         <entry key="app/src/main/res/layout/fragment_contact_detail.xml" value="0.20052083333333334" />
         <entry key="app/src/main/res/layout/fragment_contact_list.xml" value="0.20052083333333334" />
+        <entry key="app/src/main/res/layout/settings_contact_list_item.xml" value="0.359375" />
+        <entry key="app/src/main/res/menu/main_menu.xml" value="0.359375" />
+        <entry key="app/src/main/res/menu/settings_contact_list_menu.xml" value="0.359375" />
         <entry key="app/src/main/res/xml/file_paths.xml" value="0.20052083333333334" />
+        <entry key="app/src/main/res/xml/root_preferences.xml" value="0.20052083333333334" />
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" project-jdk-name="1.8" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">
