@@ -143,6 +143,8 @@ class MainActivity : AppCompatActivity() {
 
         Log.d(TAG, "Queuing up the first sound effect.")
         nextSoundTime = timer + queueNextSoundTime()
+
+        Changelog.show(this)
     }
 
     private fun showDialPad() {
