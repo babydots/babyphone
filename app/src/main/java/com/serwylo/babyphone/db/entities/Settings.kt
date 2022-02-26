@@ -10,6 +10,9 @@ import androidx.room.PrimaryKey
             entity = Contact::class,
             parentColumns = ["id"],
             childColumns = ["currentContactId"],
+
+            // This field is actually not able to be set to null, so this will trigger an exception.
+            // Instead, we should manually change the contact first.
             onDelete = ForeignKey.SET_NULL,
         )
     ]

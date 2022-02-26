@@ -5,10 +5,13 @@ import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.media.MediaRecorder
+import android.net.Uri
 import android.provider.MediaStore
 import androidx.core.content.FileProvider
+import androidx.core.net.toFile
 import androidx.core.net.toUri
 import androidx.lifecycle.*
+import com.serwylo.babyphone.db.AppDatabase
 import com.serwylo.babyphone.db.ContactDao
 import com.serwylo.babyphone.db.entities.Contact
 import com.serwylo.babyphone.db.entities.Recording
@@ -19,7 +22,11 @@ import kotlinx.coroutines.withContext
 import java.io.File
 import java.util.*
 
-class EditContactViewModel(private val context: Context, private val dao: ContactDao, initialContactId: Long = 0) : ViewModel() {
+class EditContactViewModel(
+    private val context: Context,
+    private val dao: ContactDao,
+    initialContactId: Long = 0,
+) : ViewModel() {
 
     private lateinit var contact: Contact
 
@@ -34,7 +41,8 @@ class EditContactViewModel(private val context: Context, private val dao: Contac
     private val _avatarPath: MutableLiveData<String> = MutableLiveData(null)
     val avatarPath: LiveData<String> = _avatarPath
 
-    private var isRecording = false
+    private val _isRecording: MutableLiveData<Boolean> = MutableLiveData(false)
+    val isRecording: LiveData<Boolean> = _isRecording
 
     fun getContactId(): Long = if (this::contact.isInitialized) contact.id else 0L
 
@@ -71,17 +79,43 @@ class EditContactViewModel(private val context: Context, private val dao: Contac
     }
 
     suspend fun deleteContact() = withContext(Dispatchers.IO) {
-        dao.delete(contact)
-    }
 
-    fun addSound(soundFile: File) {
-        dao.insert(Recording(contact.id, soundFile.toUri().toString()))
+        if (contact.avatarPath.isNotEmpty()) {
+            val file = Uri.parse(contact.avatarPath).toFile()
+            if (file.exists()) {
+                file.delete()
+            }
+        }
+
+        dao.getRecordingsForContactSync(contact.id).forEach { recording ->
+            val file = Uri.parse(recording.soundFilePath).toFile()
+            if (file.exists()) {
+                file.delete()
+            }
+        }
+
+        contactDir.delete()
+
+        val enabledContacts = dao.loadEnabledContactsSync().filter { it.id != contact.id }
+        if (enabledContacts.isEmpty()) {
+            val default = dao.loadDefaultContactsSync().first()
+            dao.update(default.copy(isEnabled = true))
+            dao.changeCurrentContact(default.id)
+            dao.delete(contact)
+        } else {
+            dao.changeCurrentContact(enabledContacts.first().id)
+            dao.delete(contact)
+        }
+
     }
 
     private var recorder: MediaRecorder? = null
     private var currentlyRecordingSound: File? = null
 
     suspend fun startRecording() = withContext(Dispatchers.IO) {
+
+        withContext(Dispatchers.Main) { _isRecording.value = true }
+
         File(contactDir, "${Date().time}.${Math.random() * 10000000}.3gp").also { soundFile ->
             currentlyRecordingSound = soundFile
 
@@ -98,6 +132,9 @@ class EditContactViewModel(private val context: Context, private val dao: Contac
     }
 
     suspend fun stopRecording() = withContext(Dispatchers.IO) {
+
+        withContext(Dispatchers.Main) { _isRecording.value = false }
+
         recorder?.apply {
             stop()
             release()
@@ -177,13 +214,13 @@ class EditContactViewModel(private val context: Context, private val dao: Contac
         return Bitmap.createScaledBitmap(image, width, height, true)
     }
 
-    suspend fun toggleRecording() {
-        if (isRecording) {
-            stopRecording()
-            isRecording = false
-        } else {
-            startRecording()
-            isRecording = true
+    fun deleteSound(sound: Recording) {
+        viewModelScope.launch(Dispatchers.IO) {
+            val dao = AppDatabase.getInstance(context).contactDao()
+
+            // This should then trigger relevant LiveData events which will result in this adapter being
+            // updated.
+            dao.delete(sound)
         }
     }
 

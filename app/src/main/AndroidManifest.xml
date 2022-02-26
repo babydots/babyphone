@@ -41,10 +41,10 @@
             android:name=".editcontact.EditContactActivity"
             android:exported="false"
             android:theme="@style/Theme.BabyPhone.Light"
-            android:parentActivityName=".dialer.MainActivity">
+            android:parentActivityName=".settingscontactlist.SettingsContactListActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".dialer.MainActivity" />
+                android:value=".settingscontactlist.SettingsContactListActivity" />
         </activity>
 
         <activity

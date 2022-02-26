@@ -18,12 +18,13 @@ class RandomSoundLibrary(private val context: Context, private val sounds: List<
 
             // https://stackoverflow.com/questions/3289038/play-audio-file-from-the-assets-directory
             context.assets.openFd(path.substring("/android_asset/".length)).use { assetDescriptor ->
-                MediaPlayer().also { mediaPlayer ->
-                    mediaPlayer.setDataSource(
+                MediaPlayer().apply {
+                    setDataSource(
                         assetDescriptor.fileDescriptor,
                         assetDescriptor.startOffset,
                         assetDescriptor.length
                     )
+                    prepare()
                 }
             }
         } else {
@@ -46,7 +47,6 @@ class RandomSoundLibrary(private val context: Context, private val sounds: List<
 
         currentSoundReference = toPickFrom.random().also { soundRef ->
             currentSound = createMediaPlayer(soundRef).also { sound ->
-                sound.prepare()
                 sound.start()
                 sound.setOnCompletionListener {
                     Log.d(LOG_TAG, "Sound finished playing, setting to null.")

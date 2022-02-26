@@ -9,8 +9,7 @@ import android.media.MediaPlayer
 import android.media.MediaRecorder
 import android.net.Uri
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.ViewGroup
+import android.view.*
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
@@ -27,6 +26,7 @@ import com.serwylo.babyphone.ThemeManager
 import com.serwylo.babyphone.databinding.ActivityEditContactBinding
 import com.serwylo.babyphone.databinding.EditContactSoundItemBinding
 import com.serwylo.babyphone.db.AppDatabase
+import com.serwylo.babyphone.db.entities.Contact
 import com.serwylo.babyphone.db.entities.Recording
 import com.squareup.picasso.Picasso
 import kotlinx.coroutines.launch
@@ -92,15 +92,30 @@ class EditContactActivity : AppCompatActivity() {
         binding.nameInput.addTextChangedListener { viewModel.updateName(it.toString()) }
 
         binding.sounds.layoutManager = LinearLayoutManager(this)
-        binding.sounds.adapter = SoundAdapter(this).also { adapter ->
+        binding.sounds.adapter = SoundAdapter(
+            this,
+            onDelete = { sound -> viewModel.deleteSound(sound) }
+        ).also { adapter ->
             viewModel.sounds.observe(this) { adapter.setSounds(it) }
         }
 
         viewModel.avatarPath.observe(this) { maybeShowPhoto(it) }
 
-        binding.fab.setOnClickListener {
-            lifecycleScope.launch {
-                viewModel.toggleRecording()
+        binding.startRecording.setOnClickListener {
+            lifecycleScope.launch { viewModel.startRecording() }
+        }
+
+        binding.stopRecording.setOnClickListener {
+            lifecycleScope.launch { viewModel.stopRecording() }
+        }
+
+        viewModel.isRecording.observe(this) { isRecording ->
+            if (isRecording) {
+                binding.startRecording.visibility = View.GONE
+                binding.stopRecording.visibility = View.VISIBLE
+            } else {
+                binding.startRecording.visibility = View.VISIBLE
+                binding.stopRecording.visibility = View.GONE
             }
         }
 
@@ -124,6 +139,21 @@ class EditContactActivity : AppCompatActivity() {
                 viewModel.onPhotoTaken()
             }
         }
+    }
+
+    override fun onPrepareOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.edit_contact_menu, menu)
+
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            R.id.delete -> {
+                onDeleteContact()
+            }
+        }
+        return super.onOptionsItemSelected(item)
     }
 
     private fun maybeShowPhoto(path: String) {
@@ -154,9 +184,28 @@ class EditContactActivity : AppCompatActivity() {
         if (!permissionToRecordAccepted) finish()
     }
 
+    private fun onDeleteContact() {
+        AlertDialog.Builder(this)
+            .setTitle("Confirm delete")
+            .setMessage("Are you sure you want to remove this recording?")
+            .setPositiveButton("Delete") { _, _ -> confirmDeleteContact() }
+            .setNegativeButton("Cancel") { _, _ -> }
+            .show()
+    }
+
+    private fun confirmDeleteContact() {
+        lifecycleScope.launch {
+            viewModel.deleteContact()
+            finish()
+        }
+    }
+
 }
 
-private class SoundAdapter(private val context: Context) : RecyclerView.Adapter<SoundAdapter.ViewHolder>() {
+private class SoundAdapter(
+    private val context: Context,
+    private val onDelete: (sound: Recording) -> Unit,
+) : RecyclerView.Adapter<SoundAdapter.ViewHolder>() {
 
     private var sounds = emptyList<Recording>()
 
@@ -181,18 +230,10 @@ private class SoundAdapter(private val context: Context) : RecyclerView.Adapter<
             AlertDialog.Builder(context)
                 .setTitle("Confirm delete")
                 .setMessage("Are you sure you want to remove this recording?")
-                .setPositiveButton("Delete") { _, _ -> deleteSound(sound) }
+                .setPositiveButton("Delete") { _, _ -> onDelete(sound) }
                 .setNegativeButton("Cancel") { _, _ -> }
                 .show()
         }
-    }
-
-    private fun deleteSound(sound: Recording) {
-        val dao = AppDatabase.getInstance(context).contactDao()
-
-        // This should then trigger relevant LiveData events which will result in this adapter being
-        // updated.
-        dao.delete(sound)
     }
 
     override fun getItemCount() = sounds.size

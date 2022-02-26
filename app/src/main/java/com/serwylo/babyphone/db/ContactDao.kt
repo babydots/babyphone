@@ -12,6 +12,12 @@ interface ContactDao {
     @Query("SELECT * FROM Contact WHERE isEnabled = 1")
     fun loadEnabledContacts(): LiveData<List<Contact>>
 
+    @Query("SELECT * FROM Contact WHERE isEnabled = 1")
+    suspend fun loadEnabledContactsSync(): List<Contact>
+
+    @Query("SELECT * FROM Contact WHERE isDefault = 1")
+    suspend fun loadDefaultContactsSync(): List<Contact>
+
     @Query("SELECT * FROM Contact")
     fun loadAllContacts(): LiveData<List<Contact>>
 
@@ -24,6 +30,9 @@ interface ContactDao {
 
     @Query("SELECT * FROM Recording WHERE contactId = :contactId")
     fun getRecordingsForContact(contactId: Long): LiveData<List<Recording>>
+
+    @Query("SELECT * FROM Recording WHERE contactId = :contactId")
+    suspend fun getRecordingsForContactSync(contactId: Long): List<Recording>
 
     @Query("UPDATE Settings SET currentContactId = :id")
     fun changeCurrentContact(id: Long)
