@@ -5,8 +5,11 @@
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
-        android:layout_width="0dp"
+        android:background="?attr/actionBarBackground"
+        android:theme="?attr/homeActionBarTheme"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        app:elevation="5dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

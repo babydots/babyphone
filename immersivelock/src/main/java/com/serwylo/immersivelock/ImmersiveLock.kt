@@ -19,6 +19,8 @@ class ImmersiveLock(
    private val onStopImmersiveMode: (() -> Unit)? = null,
 ) {
 
+   private var inImmersiveMode: Boolean = false
+
    companion object {
 
       /**
@@ -82,6 +84,8 @@ class ImmersiveLock(
       }
    }
 
+   fun inImmersiveMode() = inImmersiveMode
+
    /**
     * Put the screen in "Immersive sticky mode" which prevents accidental clicking of home or other
     * buttons that could leave the app. However the UX to escape this is pretty terrible (for
@@ -92,6 +96,8 @@ class ImmersiveLock(
     */
    @SuppressLint("ShowToast") // We keep the toast so that we can cancel when the user is prompted to press many times quickly. Therefore "show()" is called later on.
    fun startImmersiveMode(activity: Activity) {
+
+      inImmersiveMode = true
 
       try {
          @Suppress("DEPRECATION") // The recommended alternative was only introduced in API 30.
@@ -213,6 +219,8 @@ class ImmersiveLock(
       } catch (e: Exception) {}
 
       Toast.makeText(activity, activity.getString(unlockedMessageStringRes), Toast.LENGTH_SHORT).show()
+
+      inImmersiveMode = false
 
       onStopImmersiveMode?.invoke()
 

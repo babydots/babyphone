@@ -7,6 +7,7 @@
     <attr name="textAppearanceBody" format="reference" />
     <attr name="textAppearanceBodySmall" format="reference" />
     <attr name="avatarPadding" format="dimension" />
+    <attr name="avatarPaddingX2" format="dimension" />
     <attr name="avatarBackground" format="reference" />
     <attr name="actionBarBackground" format="reference" />
     <attr name="homeActionBarTheme" format="reference" />

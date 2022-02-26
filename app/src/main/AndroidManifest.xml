@@ -3,6 +3,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.serwylo.babyphone">
 
+    <uses-feature android:name="android.hardware.camera" android:required="false" />
+    <uses-permission-sdk-23 android:name="android.permission.RECORD_AUDIO" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -12,20 +17,55 @@
         android:theme="@style/Theme.BabyPhone.Colours"
         tools:ignore="AllowBackup">
 
-        <activity android:name=".MainActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="com.serwylo.babyphone.fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
+        </provider>
+
+        <activity
+            android:name=".settingscontactlist.SettingsContactListActivity"
+            android:exported="false"
+            android:theme="@style/Theme.BabyPhone.Light"
+            android:parentActivityName=".SettingsActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".SettingsActivity" />
         </activity>
 
         <activity
-            android:name=".SettingsActivity"
-            android:label="@string/settings"
-            android:parentActivityName=".MainActivity">
-            <meta-data android:name="android.support.PARENT_ACTIVITY" android:value=".MainActivity" />
+            android:name=".editcontact.EditContactActivity"
+            android:exported="false"
+            android:theme="@style/Theme.BabyPhone.Light"
+            android:parentActivityName=".settingscontactlist.SettingsContactListActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".settingscontactlist.SettingsContactListActivity" />
         </activity>
 
+        <activity
+            android:name=".dialer.MainActivity"
+            android:exported="true"
+            >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".SettingsActivity"
+            android:label="@string/settings"
+            android:exported="false"
+            android:parentActivityName=".dialer.MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".dialer.MainActivity" />
+        </activity>
     </application>
 
 </manifest>

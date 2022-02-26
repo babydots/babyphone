@@ -1,6 +1,6 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Theme.BabyPhone.Dark" parent="Theme.AppCompat.NoActionBar">
+    <style name="Theme.BabyPhone.Dark" parent="Theme.MaterialComponents.DayNight.NoActionBar">
 
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/purple_500</item>
@@ -27,6 +27,7 @@
         <item name="buttonBackground_3">@drawable/button_background_transparent</item>
 
         <item name="avatarPadding">2dp</item>
+        <item name="avatarPaddingX2">4dp</item>
         <item name="avatarBackground">@drawable/avatar_background_dark</item>
 
         <item name="homeActionBarTheme">@style/ThemeOverlay.MaterialComponents.Dark.ActionBar</item>
@@ -34,7 +35,7 @@
 
     </style>
 
-    <style name="Theme.BabyPhone.Light" parent="Theme.AppCompat.Light.NoActionBar">
+    <style name="Theme.BabyPhone.Light" parent="Theme.MaterialComponents.Light.NoActionBar">
 
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/purple_500</item>
@@ -61,6 +62,7 @@
         <item name="buttonBackground_3">@drawable/button_background_transparent</item>
 
         <item name="avatarPadding">2dp</item>
+        <item name="avatarPaddingX2">4dp</item>
         <item name="avatarBackground">@drawable/avatar_background_light</item>
 
         <item name="homeActionBarTheme">@style/ThemeOverlay.MaterialComponents.Dark.ActionBar</item>
@@ -95,6 +97,7 @@
         <item name="textAppearanceBodySmall">@style/TextAppearance.BodySmall.Colours</item>
 
         <item name="avatarPadding">10dp</item>
+        <item name="avatarPaddingX2">20dp</item>
         <item name="avatarBackground">@drawable/avatar_background_colours</item>
 
         <item name="homeActionBarTheme">@style/ThemeOverlay.MaterialComponents.Dark.ActionBar</item>
@@ -128,6 +131,27 @@
 
     <style name="TextAppearance.BodySmall.Colours" parent="TextAppearance.Body.Colours">
         <item name="android:textSize">18sp</item>
+    </style>
+
+    <!-- https://material.io/components/buttons/android#toggle-button -->
+    <style name="Widget.App.Button.OutlinedButton.IconOnly" parent="Widget.MaterialComponents.Button.OutlinedButton">
+        <item name="iconPadding">0dp</item>
+        <item name="android:insetTop">0dp</item>
+        <item name="android:insetBottom">0dp</item>
+        <item name="android:paddingLeft">12dp</item>
+        <item name="android:paddingRight">12dp</item>
+        <item name="android:minWidth">48dp</item>
+        <item name="android:minHeight">48dp</item>
+    </style>
+
+    <style name="Widget.App.Button.IconOnly" parent="Widget.MaterialComponents.Button">
+        <item name="iconPadding">0dp</item>
+        <item name="android:insetTop">0dp</item>
+        <item name="android:insetBottom">0dp</item>
+        <item name="android:paddingLeft">12dp</item>
+        <item name="android:paddingRight">12dp</item>
+        <item name="android:minWidth">48dp</item>
+        <item name="android:minHeight">48dp</item>
     </style>
 
 </resources>
