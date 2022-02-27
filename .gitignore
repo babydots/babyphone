@@ -14,5 +14,8 @@
 .cxx
 local.properties
 
+# Build
+app/release
+
 # Used for working files such as raw audio, audacity projects, etc.
 /scratch

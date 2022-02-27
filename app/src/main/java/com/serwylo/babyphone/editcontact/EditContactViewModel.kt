@@ -116,14 +116,21 @@ class EditContactViewModel(
 
         withContext(Dispatchers.Main) { _isRecording.value = true }
 
-        File(contactDir, "${Date().time}.${Math.random() * 10000000}.3gp").also { soundFile ->
+        File(contactDir, "${Date().time}.${Math.random() * 10000000}.aac").also { soundFile ->
             currentlyRecordingSound = soundFile
 
             recorder = MediaRecorder().apply {
+                // Tried using AudioSource.VOICE_RECOGNITION - but the sound cancelation provided
+                // ends up sounding tinny and robotic.
                 setAudioSource(MediaRecorder.AudioSource.MIC)
-                setOutputFormat(MediaRecorder.OutputFormat.THREE_GPP)
+
+                setOutputFormat(MediaRecorder.OutputFormat.MPEG_4)
+
+                // Nice high quality settings for voice recording.
+                setAudioEncodingBitRate(128000)
+                setAudioSamplingRate(44100)
                 setOutputFile(soundFile)
-                setAudioEncoder(MediaRecorder.AudioEncoder.AMR_NB)
+                setAudioEncoder(MediaRecorder.AudioEncoder.AAC)
 
                 prepare()
                 start()
