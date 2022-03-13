@@ -1,0 +1,5 @@
+Better quality audio recording.
+
+Less fuzzy, clean and crisp sounds. Only applies to new recordings, so you may wish to re-record any previosu sounds.
+
+Please donate to support further development.
