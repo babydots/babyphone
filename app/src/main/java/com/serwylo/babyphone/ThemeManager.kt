@@ -30,7 +30,7 @@ object ThemeManager {
         activity.overridePendingTransition(0, 0)
     }
 
-    fun rememberTheme(context: Context?) {
+    fun rememberTheme(context: Context) {
         currentTheme = PreferenceManager.getDefaultSharedPreferences(context).getString(PREFERENCE_NAME, THEME_COLOURS)
     }
 
