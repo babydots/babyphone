@@ -3,8 +3,10 @@ package com.serwylo.babyphone.db.migrations
 import android.content.ContentValues
 import android.content.Context
 import android.database.sqlite.SQLiteDatabase
+import androidx.annotation.StringRes
 import androidx.room.RoomDatabase
 import androidx.sqlite.db.SupportSQLiteDatabase
+import com.serwylo.babyphone.R
 import com.serwylo.babyphone.db.AppDatabase
 import com.serwylo.babyphone.db.ContactDao
 import com.serwylo.babyphone.db.entities.Contact
@@ -21,9 +23,9 @@ fun makeDatabaseSeeder(context: Context) = object : RoomDatabase.Callback() {
 
         GlobalScope.launch(Dispatchers.IO) {
 
-            val babyId = createDefaultContact(dao, defaultContactBaby)
-            createDefaultContact(dao, defaultContactDad)
-            createDefaultContact(dao, defaultContactMum)
+            val babyId = createDefaultContact(context, dao, defaultContactBaby)
+            createDefaultContact(context, dao, defaultContactDad)
+            createDefaultContact(context, dao, defaultContactMum)
 
             // Intentionally don't make available via DAO, we don't want anyone else to be able
             // to insert more than the default single row of settings into our database.
@@ -36,11 +38,11 @@ fun makeDatabaseSeeder(context: Context) = object : RoomDatabase.Callback() {
     }
 }
 
-private fun createDefaultContact(dao: ContactDao, contact: InitContact): Long {
+private fun createDefaultContact(context: Context, dao: ContactDao, contact: InitContact): Long {
 
     val id = dao.insert(
         Contact(
-            contact.name,
+            context.getString(contact.nameRes),
             "file:///android_asset/${contact.avatar}",
             isEnabled = true,
             isDefault = true,
@@ -60,10 +62,10 @@ private fun createDefaultContact(dao: ContactDao, contact: InitContact): Long {
 
 }
 
-private data class InitContact(val name: String, val avatar: String, val sounds: List<String>)
+private data class InitContact(@StringRes val nameRes: Int, val avatar: String, val sounds: List<String>)
 
 private val defaultContactBaby = InitContact(
-    "Baby",
+    R.string.default_contact__baby,
     "baby.jpg",
     listOf(
         "babble_1.ogg",
@@ -90,7 +92,7 @@ private val defaultContactBaby = InitContact(
 )
 
 private val defaultContactDad = InitContact(
-    "Dad",
+    R.string.default_contact__dad,
     "dad.jpg",
     listOf(
         "dad_mmm.ogg",
@@ -102,7 +104,7 @@ private val defaultContactDad = InitContact(
 )
 
 private val defaultContactMum = InitContact(
-    "Mum",
+    R.string.default_contact__mum,
     "mum.jpg",
     listOf(
         "mum_mmm_hmm.ogg",

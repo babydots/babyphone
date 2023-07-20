@@ -5,7 +5,7 @@
     <item
         android:id="@+id/menu_lock"
         android:icon="@drawable/ic_lock"
-        android:title="@string/lock"
+        android:title="@string/btn__lock"
         app:showAsAction="always" />
 
     <item

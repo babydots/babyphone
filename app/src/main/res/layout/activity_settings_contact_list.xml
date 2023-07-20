@@ -30,7 +30,7 @@
             android:layout_height="wrap_content"
             android:textAppearance="?attr/textAppearanceCaption"
             android:padding="16dp"
-            android:text="Add relatives and friends then disable the default contacts for a more personal phone experience. Tap your custom personalised to edit. Defaults cannot be edited, just disabled." />
+            android:text="@string/contact_list__description" />
 
     </com.google.android.material.card.MaterialCardView>
 
