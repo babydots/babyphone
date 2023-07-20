@@ -120,7 +120,7 @@ class EditContactViewModel(
             currentlyRecordingSound = soundFile
 
             recorder = MediaRecorder().apply {
-                // Tried using AudioSource.VOICE_RECOGNITION - but the sound cancelation provided
+                // Tried using AudioSource.VOICE_RECOGNITION - but the sound cancellation provided
                 // ends up sounding tinny and robotic.
                 setAudioSource(MediaRecorder.AudioSource.MIC)
 

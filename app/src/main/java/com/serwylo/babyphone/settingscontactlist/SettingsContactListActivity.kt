@@ -84,7 +84,7 @@ class SettingsContactListActivity : AppCompatActivity() {
 
     private fun onToggleContact(contact: Contact, enabled: Boolean) {
         if (!viewModel.toggleContact(contact, enabled)) {
-            Toast.makeText(this, "Your phone needs at least one contact enabled.", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, R.string.settings__at_least_one_contact_requried, Toast.LENGTH_SHORT).show()
             adapter.notifyContactRefresh(contact)
         }
     }

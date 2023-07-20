@@ -3,7 +3,6 @@ package com.serwylo.babyphone.contactlist
 import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import com.serwylo.babyphone.databinding.ContactItemAddBinding
 
 import com.serwylo.babyphone.databinding.ContactItemBinding
 import com.serwylo.babyphone.db.entities.Contact
@@ -51,7 +50,5 @@ class ContactListViewAdapter(
     override fun getItemCount(): Int = contacts.size
 
     inner class ViewHolder(val binding: ContactItemBinding) : RecyclerView.ViewHolder(binding.root)
-
-    inner class ViewHolderAdd(binding: ContactItemAddBinding) : RecyclerView.ViewHolder(binding.root)
 
 }

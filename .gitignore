@@ -19,3 +19,5 @@ app/release
 
 # Used for working files such as raw audio, audacity projects, etc.
 /scratch
+
+weblate-screenshots

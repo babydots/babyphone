@@ -32,8 +32,8 @@ object Changelog {
                 R.drawable.ic_person_add,
             ),
         ).apply {
-            titleText = "What's New?"
-            buttonText = "Continue"
+            titleText = context.getString(R.string.whats_new__title)
+            buttonText = context.getString(R.string.whats_new__continue)
         }
 
     }

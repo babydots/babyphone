@@ -6,7 +6,6 @@ import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.media.MediaPlayer
-import android.media.MediaRecorder
 import android.net.Uri
 import android.os.Bundle
 import android.view.*
@@ -26,11 +25,9 @@ import com.serwylo.babyphone.ThemeManager
 import com.serwylo.babyphone.databinding.ActivityEditContactBinding
 import com.serwylo.babyphone.databinding.EditContactSoundItemBinding
 import com.serwylo.babyphone.db.AppDatabase
-import com.serwylo.babyphone.db.entities.Contact
 import com.serwylo.babyphone.db.entities.Recording
 import com.squareup.picasso.Picasso
 import kotlinx.coroutines.launch
-import java.io.File
 import java.util.*
 
 private const val REQUEST_RECORD_AUDIO_PERMISSION = 200
@@ -126,7 +123,7 @@ class EditContactActivity : AppCompatActivity() {
         try {
             startActivityForResult(viewModel.createObtainImageIntent(), REQUEST_IMAGE_CAPTURE)
         } catch (e: ActivityNotFoundException) {
-            Toast.makeText(this, "Unable to open camera app", Toast.LENGTH_LONG).show()
+            Toast.makeText(this, R.string.edit_contact__unable_to_open_camera_app, Toast.LENGTH_LONG).show()
         }
     }
 
@@ -186,10 +183,10 @@ class EditContactActivity : AppCompatActivity() {
 
     private fun onDeleteContact() {
         AlertDialog.Builder(this)
-            .setTitle("Confirm delete")
-            .setMessage("Are you sure you want to remove this recording?")
-            .setPositiveButton("Delete") { _, _ -> confirmDeleteContact() }
-            .setNegativeButton("Cancel") { _, _ -> }
+            .setTitle(R.string.edit_contact__confirm_delete_title)
+            .setMessage(R.string.edit_contact__confirm_delete_message)
+            .setPositiveButton(R.string.btn__delete) { _, _ -> confirmDeleteContact() }
+            .setNegativeButton(R.string.btn__cancel) { _, _ -> }
             .show()
     }
 
@@ -228,10 +225,10 @@ private class SoundAdapter(
 
         holder.binding.delete.setOnClickListener {
             AlertDialog.Builder(context)
-                .setTitle("Confirm delete")
-                .setMessage("Are you sure you want to remove this recording?")
-                .setPositiveButton("Delete") { _, _ -> onDelete(sound) }
-                .setNegativeButton("Cancel") { _, _ -> }
+                .setTitle(R.string.edit_contact__confirm_delete_title)
+                .setMessage(R.string.edit_contact__confirm_delete_recording_message)
+                .setPositiveButton(R.string.btn__delete) { _, _ -> onDelete(sound) }
+                .setNegativeButton(R.string.btn__cancel) { _, _ -> }
                 .show()
         }
     }

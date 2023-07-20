@@ -2,12 +2,39 @@
     <string name="app_name">Baby Phone</string>
     <string name="settings">Settings</string>
 
-    <string name="settings_category_display">Display</string>
-    <string name="settings_theme">Theme</string>
+    <string name="whats_new">What\'s New?</string>
+    <string name="whats_new__title">What\'s New?</string>
+    <string name="whats_new__continue">Continue</string>
+
     <string name="theme_light">Light</string>
     <string name="theme_dark">Dark</string>
     <string name="theme_colours">Crazy rainbow</string>
-    <string name="lock">Lock</string>
-    <string name="settings_category_phone">Phone</string>
-    <string name="settings_contact">Contact</string>
+
+    <string name="default_contact__baby">Baby</string>
+    <string name="default_contact__dad">Dad</string>
+    <string name="default_contact__mum">Mum</string>
+
+    <string name="btn__add_contact">Record</string>
+    <string name="btn__record_sound">Record</string>
+    <string name="btn__stop_recording_sound">Stop Recording</string>
+    <string name="btn__play_sound">Play sound</string>
+    <string name="btn__lock">Lock</string>
+    <string name="btn__delete">Delete</string>
+    <string name="btn__cancel">Cancel</string>
+
+    <string name="settings__category_display">Display</string>
+    <string name="settings__theme">Theme</string>
+    <string name="settings__category_phone">Phone</string>
+    <string name="settings__contact">Contact</string>
+    <string name="settings__at_least_one_contact_requried">Your phone needs at least one contact enabled.</string>
+
+    <string name="edit_contact__unable_to_open_camera_app">Unable to open camera app</string>
+    <string name="edit_contact__confirm_delete_title">Confirm delete</string>
+    <string name="edit_contact__confirm_delete_message">Are you sure you want to remove this contact? Their image and all recordings will be lost.</string>
+    <string name="edit_contact__confirm_delete_recording_message">Are you sure you want to remove this recording?</string>
+    <string name="edit_contact__name">Name</string>
+    <string name="edit_contact__suggestions">Tips: Centre your face in the photo. Record sounds that mimic how you respond to your baby in normal speech.</string>
+
+    <string name="contact_list__description">Add relatives and friends then disable the default contacts for a more personal phone experience. Tap your custom personalised to edit. Defaults cannot be edited, just disabled.</string>
+    <string name="contact_list__default_contact">Default</string>
 </resources>
