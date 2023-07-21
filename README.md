@@ -38,6 +38,14 @@ If you wish to support the development financially, you can do so via:
 
 Please report any issues or suggest features on the [issue tracker](https://github.com/babydots/babyphone/issues).
 
+### Translating
+
+We use [Weblate](https://hosted.weblate.org/engage/babyphone/) to manage translations. Please see [these instructions for using Weblate](https://hosted.weblate.org/engage/babyphone/) to translate BabyPhone.
+
+| Android app                                                                                                                                          | F-Droid metadata                                                                                                                                  |
+|------------------------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------|
+| [![Translation status](https://hosted.weblate.org/widgets/babyphone/-/android-strings/multi-auto.svg)](https://hosted.weblate.org/engage/babyphone/) | [![Translation status](https://hosted.weblate.org/widgets/babyphone/-/app-metadata/multi-auto.svg)](https://hosted.weblate.org/engage/babyphone/) |
+
 ### Submitting changes
 
 Pull requests will be warmly received at [https://github.com/babydots/babyphone](https://github.com/babydots/babyphone).
