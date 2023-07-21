@@ -1,0 +1,10 @@
+Liker sjarmtrollet ditt å snakke med familie og venner på telefonen? Blir de lei seg når ingen har tid til å snakke med dem?
+
+Installer dette late-som-telefon-programmet slik at de kan lytte til og snakke med et annet barn i den andre enden av røret som babler tilbake til dem.
+
+Fortsatt i en tidlig utviklingsfase. Noen idéer til fremtidige forbedringe:
+* Opptak av egen lyd, slik at de små kan høre sine kjære fra den virkelige familien.
+* Interaktiv lytting til mikrofonen og kun babling tilbake når det er stille.
+* Interaksjon med andre telefonknapper, for eksempel ringeknappen, dempeknappen, osv.
+
+Støtt den videre utviklingen via Liberapay, eller GitHub-sponsors.
