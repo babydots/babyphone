@@ -1,0 +1,4 @@
+Translations:
+* Norwegian Bokmål (thanks kingu for the translations and assistance in ensuring Weblate is configured appropriately)
+
+Want to see this app in your language? Please join us on Weblate to contribute a translation.
