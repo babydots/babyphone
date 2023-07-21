@@ -1,18 +1,21 @@
 # Baby Phone
 
+[<img src="https://f-droid.org/badge/get-it-on.png" alt="Get it on F-Droid" height="80px">](https://f-droid.org/app/com.serwylo.babyphone) [<img alt='Get it on Google Play' src='https://play.google.com/intl/en_us/badges/images/generic/en_badge_web_generic.png' height='80px'/>](https://play.google.com/store/apps/details?id=com.serwylo.babyphone)
+
+[![Liberapay receiving](https://img.shields.io/liberapay/receives/BabyDots)](https://liberapay.com/BabyDots/donate)
+[![Translation status](https://hosted.weblate.org/widgets/babyphone/-/svg-badge.svg)](https://hosted.weblate.org/engage/babyphone/)
+[![F-Droid version](https://img.shields.io/f-droid/v/com.serwylo.babyphone)](https://f-droid.org/packages/com.serwylo.babyphone/)
+[![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/babydots/babyphone/android.yml?branch=main)](https://github.com/babydots/babyphone/actions?query=workflow%3A%22Android+CI%22)
+
 **A pretend phone app for little people who want to practice talking to others.**
 
 <img src="./fastlane/metadata/android/en-US/images/featureGraphic.png" height="300" />
 
-<img src="./fastlane/metadata/android/en-US/images/phoneScreenshots/01_colour_theme.png" alt="Screenshot of pretend phone app (crazy rainbow theme)" height="400"> <img src="./fastlane/metadata/android/en-US/images/phoneScreenshots/01_dark_theme.png" alt="Screenshot of pretend phone app (dark theme)" height="400"> <img src="./fastlane/metadata/android/en-US/images/phoneScreenshots/01_light_theme.png" alt="Screenshot of pretend phone app (light theme)" height="400">
+<img src="./fastlane/metadata/android/en-US/images/phoneScreenshots/01_colour_theme.png" alt="Screenshot of pretend phone app (crazy rainbow theme)" height="400"> <img src="./fastlane/metadata/android/en-US/images/phoneScreenshots/02_contacts.png" alt="Screenshot of pretend phone app (listing contact selector on the main screen)" height="400"> <img src="./fastlane/metadata/android/en-US/images/phoneScreenshots/04_dark_theme.png" alt="Screenshot of pretend phone app (dark theme)" height="400"> <img src="./fastlane/metadata/android/en-US/images/phoneScreenshots/05_edit_contact_list.png" alt="Screenshot of pretend phone app (adding new contacts via settings)" height="400">
 
 Does your little one like to talk to family and friends on the phone? Do they get sad when there is nobody free to speak with them?
 
 Install this pretend phone app to let them listen and speak to another toddler at the other end of the phone babbling back to them.
-
-[<img src="https://fdroid.gitlab.io/artwork/badge/get-it-on.png"
-     alt="Get it on F-Droid"
-     height="80">](https://f-droid.org/packages/com.serwylo.babyphone/)
 
 ## Roadmap
 
@@ -32,7 +35,6 @@ If you wish to support the development financially, you can do so via:
 
 * [Liberapay](https://liberapay.com/BabyDots/donate)
 * [GitHub sponsors](https://github.com/sponsors/pserwylo)
-<!--* [Google Play](https://play.google.com/store/apps/details?id=com.serwylo.babyphone) - The version on Google Play is the exact same version as F-Droid (i.e. the .apk built and signed by F-Droid). However, it is available for a minimal price to facilitate donations to support development. -->
 
 ### Reporting Issues
 
