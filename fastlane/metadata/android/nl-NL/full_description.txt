@@ -1,0 +1,10 @@
+Praat je kleintje graag met familie en vrienden aan de telefoon? Worden ze verdrietig als er niemand vrij is om met ze te praten?
+
+Installeer deze nep-telefoon-app om ze te laten luisteren en praten met een andere peuter aan de andere kant van de telefoon die tegen ze brabbelt.
+
+Nog in vroege stadia van ontwikkeling. Enkele ideeën voor toekomstige verbeteringen zijn:
+* Neem uw eigen audio op zodat uw kleintjes dierbaren van hun echte familie kunnen horen.
+* Interactief luisteren naar de microfoon en alleen terugbabbelen als er een periode van stilte is.
+* Interactie met andere telefoonknoppen, zoals het toetsenblok, de mute-knop, enz.
+
+Steun alstublieft de verdere ontwikkeling via GitHub-sponsors of Liberapay.
