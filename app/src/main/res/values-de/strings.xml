@@ -1,2 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources></resources>
+<resources>
+    <string name="btn__play_sound">Ton abspielen</string>
+    <string name="default_contact__dad">Papa</string>
+    <string name="btn__add_contact">Aufzeichnen</string>
+    <string name="settings__category_display">Bildschirm</string>
+    <string name="settings__contact">Kontakt</string>
+    <string name="whats_new">Nachrichten</string>
+    <string name="whats_new__title">Nachrichten</string>
+    <string name="whats_new__continue">Weiter</string>
+    <string name="theme_light">Licht</string>
+    <string name="btn__delete">Löschen</string>
+    <string name="theme_dark">Dunkel</string>
+    <string name="settings__category_phone">Telefon</string>
+    <string name="settings__at_least_one_contact_requried">Es ist mindestens ein Ansprechpartner erforderlich.</string>
+    <string name="contact_list__default_contact">Standard</string>
+    <string name="settings">Einstellungen</string>
+    <string name="btn__stop_recording_sound">Halt die Aufnahme</string>
+    <string name="default_contact__baby">Baby</string>
+    <string name="default_contact__mum">Mama</string>
+    <string name="theme_colours">Regenbogen</string>
+    <string name="btn__record_sound">Aufzeichnen</string>
+    <string name="btn__lock">Blockieren</string>
+    <string name="btn__cancel">Annullieren</string>
+    <string name="edit_contact__confirm_delete_title">Löschung bestätigen</string>
+    <string name="settings__theme">Thema</string>
+    <string name="edit_contact__name">Name</string>
+    <string name="edit_contact__suggestions">Tipps: Zentrieren Sie Ihr Gesicht auf dem Foto. Nehmen Sie Geräusche auf, als würden Sie normal auf Ihr Baby reagieren.</string>
+    <string name="edit_contact__unable_to_open_camera_app">Kamera konnte nicht geöffnet werden</string>
+    <string name="edit_contact__confirm_delete_message">Diesen Kontakt samt Bild und Aufzeichnungen entfernen\?</string>
+    <string name="edit_contact__confirm_delete_recording_message">Diese Aufnahme entfernen\?</string>
+    <string name="contact_list__description">Entfernen Sie die Standardeinstellungen und fügen Sie Verwandte und Freunde als Kontakte hinzu.</string>
+    <string name="app_name">Baby Telefon</string>
+</resources>
