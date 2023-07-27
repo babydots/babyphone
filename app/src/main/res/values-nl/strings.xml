@@ -1,2 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources></resources>
+<resources>
+    <string name="app_name">Baby Telefoon</string>
+    <string name="whats_new">Nieuws</string>
+    <string name="whats_new__title">Nieuws</string>
+    <string name="whats_new__continue">Doorgaan</string>
+    <string name="theme_light">Licht</string>
+    <string name="theme_dark">Donker</string>
+    <string name="default_contact__baby">Baby</string>
+    <string name="btn__add_contact">Opnemen</string>
+    <string name="btn__record_sound">Opnemen</string>
+    <string name="btn__stop_recording_sound">Stop Opnemen</string>
+    <string name="btn__lock">Vergrendelen</string>
+    <string name="btn__delete">Verwijderen</string>
+    <string name="settings__category_display">Weergave</string>
+    <string name="settings__contact">Contacten</string>
+    <string name="settings__at_least_one_contact_requried">Minstens 1 contact is nodig.</string>
+    <string name="edit_contact__unable_to_open_camera_app">Kan de camera niet openen</string>
+    <string name="edit_contact__confirm_delete_title">Bevestig verwijderen</string>
+    <string name="edit_contact__confirm_delete_message">Verwijder deze contact inclusief hun foto en opnames\?</string>
+    <string name="default_contact__dad">Papa</string>
+    <string name="edit_contact__confirm_delete_recording_message">Verwijder deze opname\?</string>
+    <string name="edit_contact__name">Naam</string>
+    <string name="edit_contact__suggestions">Tip: Centreer je gezicht in de foto. Neem geluiden op zoals je normaal op je baby reageert.</string>
+    <string name="contact_list__description">Verwijder de standaard personen en voeg familieleden en vrienden toe als contact.</string>
+    <string name="contact_list__default_contact">Standaard</string>
+    <string name="settings">Instellingen</string>
+    <string name="theme_colours">Regenboog</string>
+    <string name="default_contact__mum">Mama</string>
+    <string name="btn__play_sound">Speel geluid</string>
+    <string name="btn__cancel">Annuleren</string>
+    <string name="settings__theme">Thema</string>
+    <string name="settings__category_phone">Telefoon</string>
+</resources>
