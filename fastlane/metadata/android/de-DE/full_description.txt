@@ -1,0 +1,10 @@
+Telefoniert dein Kleines gerne mit Familie und Freunden? Wird er traurig, wenn niemand Zeit hat, mit ihnen zu sprechen?
+
+Installiere diese vorgetäuschte Telefon-App, damit dein Kind zuhören und mit einem anderen Kleinkind am anderen Ende des Telefons sprechen kann, das ihm etwas vorplappert.
+
+Noch in einem frühen Entwicklungsstadium. Ein paar Ideen für zukünftige Verbesserungen sind:
+* Nimm dein eigenes Audio auf, damit deine Kleinen die Lieben ihrer echten Familie hören können.
+* Hör interaktiv dem Mikrofon zu und plappere nur zurück, wenn es eine Zeit lang still ist.
+* Interagiere mit anderen Telefontasten wie der Wähltastatur, der Stummschalttaste usw.
+
+Bitte unterstütze die weitere Entwicklung bei GitHub-Sponsoren oder Liberapay.
