@@ -1,0 +1,5 @@
+Translations (both thanks to @MoiZie!):
+* German
+* Dutch
+
+Want to see this app in your language? Please join us on Weblate to contribute a translation.
