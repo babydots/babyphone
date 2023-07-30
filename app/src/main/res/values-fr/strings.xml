@@ -1,2 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources></resources>
+<resources>
+    <string name="btn__record_sound">Enregistrer</string>
+    <string name="whats_new__title">Actualités</string>
+    <string name="settings">Paramètres</string>
+    <string name="whats_new">Actualités</string>
+    <string name="theme_dark">Sombre</string>
+    <string name="default_contact__baby">Bébé</string>
+    <string name="default_contact__dad">Papa</string>
+    <string name="default_contact__mum">Maman</string>
+    <string name="btn__stop_recording_sound">Arrêter l’enregistrement</string>
+    <string name="settings__contact">Contact</string>
+    <string name="edit_contact__unable_to_open_camera_app">Impossible d’ouvrir la caméra</string>
+    <string name="edit_contact__confirm_delete_title">Confirmer la suppression</string>
+    <string name="edit_contact__confirm_delete_message">Supprimer ce contact, y compris son image et ses enregistrements \?</string>
+    <string name="edit_contact__name">Nom</string>
+    <string name="edit_contact__suggestions">Conseils : Centrez votre visage sur la photo. Enregistrez des sons comme si vous répondiez normalement à votre bébé.</string>
+    <string name="contact_list__description">Supprimez les valeurs par défaut et ajoutez des parents et des amis comme contacts.</string>
+    <string name="contact_list__default_contact">Défaut</string>
+    <string name="whats_new__continue">Continuer</string>
+    <string name="app_name">Téléphone bébé</string>
+    <string name="theme_light">Claire</string>
+    <string name="theme_colours">Arc-en-ciel</string>
+    <string name="btn__add_contact">Enregistrer</string>
+    <string name="btn__play_sound">Jouer le son</string>
+    <string name="btn__lock">Verrouiller</string>
+    <string name="btn__delete">Supprimer</string>
+    <string name="settings__theme">Thème</string>
+    <string name="btn__cancel">Annuler</string>
+    <string name="settings__category_display">Affichage</string>
+    <string name="settings__category_phone">Téléphone</string>
+    <string name="settings__at_least_one_contact_requried">Au moins un contact est nécessaire.</string>
+    <string name="edit_contact__confirm_delete_recording_message">Supprimer cet enregistrement \?</string>
+</resources>
