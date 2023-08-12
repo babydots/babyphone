@@ -1,0 +1,4 @@
+Translations:
+* French (thanks to @eUgEntOptIc44)
+
+Want to see this app in your language? Please join us on Weblate to contribute a translation.
