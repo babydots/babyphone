@@ -1,2 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources></resources>
+<resources>
+    <string name="theme_light">Светлый</string>
+    <string name="settings__category_display">Экран</string>
+    <string name="default_contact__mum">Мама</string>
+    <string name="contact_list__description">Удалите значения по умолчанию и добавьте родственников и друзей в качестве контактов.</string>
+    <string name="theme_dark">Темный</string>
+    <string name="edit_contact__name">Имя</string>
+    <string name="edit_contact__confirm_delete_title">Подтвердить удаление</string>
+    <string name="edit_contact__suggestions">Подсказки: Центрируйте ваше лицо на фотографии. Записывайте звуки словно просто отвечаете вашему ребёнку.</string>
+    <string name="settings__contact">Контакт</string>
+    <string name="settings__theme">Тема</string>
+    <string name="btn__add_contact">Записать</string>
+    <string name="btn__lock">Заблокировать</string>
+    <string name="btn__cancel">Отменить</string>
+    <string name="edit_contact__confirm_delete_message">Уделить этот контакт включая все картинки и записи\?</string>
+    <string name="settings__category_phone">Телефон</string>
+    <string name="btn__stop_recording_sound">Остановить</string>
+    <string name="btn__play_sound">Проиграть звук</string>
+    <string name="theme_colours">Радуга</string>
+    <string name="whats_new">Новости</string>
+    <string name="edit_contact__unable_to_open_camera_app">На получилось открыть камеру</string>
+    <string name="edit_contact__confirm_delete_recording_message">Удалить эту запись\?</string>
+    <string name="whats_new__title">Новости</string>
+    <string name="contact_list__default_contact">По умолчанию</string>
+    <string name="whats_new__continue">Продолжить</string>
+    <string name="settings">Настройки</string>
+    <string name="default_contact__baby">Бэйби</string>
+    <string name="app_name">Бэйби-телефон</string>
+    <string name="settings__at_least_one_contact_requried">Нужен хотя бы один контакт.</string>
+    <string name="btn__record_sound">Записать</string>
+    <string name="default_contact__dad">Папа</string>
+    <string name="btn__delete">Удалить</string>
+</resources>
