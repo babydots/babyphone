@@ -19,6 +19,8 @@ import com.serwylo.babyphone.db.AppDatabase
 import com.serwylo.babyphone.db.entities.Contact
 import com.serwylo.babyphone.editcontact.EditContactActivity
 
+private const val PICK_MYFILE_REQUEST = 1
+
 class SettingsContactListActivity : AppCompatActivity() {
 
     private lateinit var viewModel: SettingsContactListViewModel
@@ -78,8 +80,30 @@ class SettingsContactListActivity : AppCompatActivity() {
             R.id.add -> {
                 startActivity(Intent(this, EditContactActivity::class.java))
             }
+
+            R.id.import_contact -> {
+                onImportContact()
+            }
         }
         return super.onOptionsItemSelected(item)
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+
+        if (requestCode == PICK_MYFILE_REQUEST && resultCode == RESULT_OK) {
+
+            startActivity(Intent(this, EditContactActivity::class.java).apply {
+                putExtra(EditContactActivity.IMPORT_CONTACT_URI, data?.data.toString())
+            })
+        }
+    }
+
+    private fun onImportContact() {
+        val intent = Intent(Intent.ACTION_OPEN_DOCUMENT);
+        intent.type = "application/zip"
+        intent.addCategory(Intent.CATEGORY_OPENABLE)
+        startActivityForResult(Intent.createChooser(intent, "Select File"), PICK_MYFILE_REQUEST);
     }
 
     private fun onToggleContact(contact: Contact, enabled: Boolean) {

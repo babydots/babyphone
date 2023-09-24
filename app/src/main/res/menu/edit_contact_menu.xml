@@ -3,6 +3,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
+        android:id="@+id/share"
+        android:icon="@drawable/ic_share"
+        app:showAsAction="always"
+        android:title="@string/btn__share" />
+
+    <item
         android:id="@+id/delete"
         android:icon="@drawable/ic_delete"
         app:showAsAction="always"

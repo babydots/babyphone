@@ -7,6 +7,7 @@ import android.graphics.BitmapFactory
 import android.media.MediaRecorder
 import android.net.Uri
 import android.provider.MediaStore
+import android.provider.OpenableColumns
 import androidx.core.content.FileProvider
 import androidx.core.net.toFile
 import androidx.core.net.toUri
@@ -19,8 +20,15 @@ import com.serwylo.babyphone.utils.debounce
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import java.io.BufferedInputStream
+import java.io.BufferedOutputStream
 import java.io.File
+import java.io.FileInputStream
+import java.io.FileOutputStream
 import java.util.*
+import java.util.zip.ZipEntry
+import java.util.zip.ZipFile
+import java.util.zip.ZipOutputStream
 
 class EditContactViewModel(
     private val context: Context,
@@ -231,6 +239,107 @@ class EditContactViewModel(
         }
     }
 
+    fun shareContact(): Uri {
+        val fileName = contact.name.ifEmpty { contact.id.toString() }
+        val zipFile = File(context.getExternalFilesDir("Contacts"), "$fileName.zip")
+
+        ZipOutputStream(BufferedOutputStream(FileOutputStream(zipFile))).use {
+            zipFiles(it, contactDir)
+        }
+
+        return FileProvider.getUriForFile(
+            context,
+            "com.serwylo.babyphone.fileprovider",
+            zipFile
+        )
+    }
+
+    private fun zipFiles(zipOut: ZipOutputStream, sourceFile: File) {
+        val buffer = ByteArray(2048)
+
+        sourceFile.listFiles()?.asSequence()?.forEach { f ->
+            FileInputStream(f).use { fi ->
+                BufferedInputStream(fi).use { origin ->
+                    val zipEntry = ZipEntry(f.name)
+                    zipOut.putNextEntry(zipEntry)
+                    while (true) {
+                        val readBytes = origin.read(buffer)
+                        if (readBytes == -1) {
+                            break
+                        }
+                        zipOut.write(buffer, 0, readBytes)
+                    }
+                    zipOut.closeEntry()
+                }
+            }
+        }
+    }
+
+    fun importContactFromZipFile(zipUri: Uri) {
+        viewModelScope.launch(Dispatchers.IO) {
+
+            context.contentResolver.query(
+                zipUri,
+                null,
+                null,
+                null,
+                null
+            )?.use { cursor ->
+                val index = cursor.getColumnIndex(OpenableColumns.DISPLAY_NAME)
+                cursor.moveToFirst()
+                val name = cursor.getString(index).removeSuffix(".zip")
+                _name.postValue(name)
+                contact = contact.copy(name = name).also {
+                    dao.update(it)
+                }
+            }
+
+            val zipFile = File(context.getExternalFilesDir("Contacts"), "temp.zip")
+
+            context.contentResolver.openInputStream(zipUri)?.use { inputStream ->
+                zipFile.outputStream().use {
+                    inputStream.copyTo(it)
+                }
+            }
+
+            ZipFile(zipFile).use { zip ->
+                zip.entries()
+                    .asSequence()
+                    .filter { zipEntry ->
+                        zipEntry.name == "photo.small.jpg" || zipEntry.name.endsWith(".aac")
+                    }
+                    .forEach { zipEntry ->
+                        val outputFile = File(contactDir, zipEntry.name)
+
+                        zip.getInputStream(zipEntry).use { input ->
+                            outputFile.outputStream().use { outputStream ->
+                                input.copyTo(outputStream)
+                                if (zipEntry.name == "photo.small.jpg") {
+                                    // handle photo
+                                    withContext(Dispatchers.Main) {
+                                        _avatarPath.value = outputFile.toUri().toString()
+                                    }
+
+                                    contact =
+                                        contact.copy(avatarPath = outputFile.toUri().toString())
+                                            .also {
+                                                dao.update(it)
+                                            }
+                                } else {
+                                    // handle audio
+                                    dao.insert(
+                                        Recording(
+                                            contact.id,
+                                            outputFile.toUri().toString(),
+                                        )
+                                    )
+                                }
+                            }
+                        }
+                    }
+            }
+        }
+    }
 }
 
 class EditContactViewModelFactory(private val context: Context, private val dao: ContactDao, private val contactId: Long) : ViewModelProvider.Factory {
