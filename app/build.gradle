@@ -29,6 +29,13 @@ android {
         }
     }
 
+    lint {
+        // This is from:
+        // Error: When targeting Android 13 or higher, posting a permission requires holding the POST_NOTIFICATIONS permission (usage from com.squareup.picasso.RemoteViewsAction.NotificationAction) [NotificationPermission]
+        // Although we use this library, we don't use the part of the library.
+        disable 'NotificationPermission'
+    }
+
     buildTypes {
         release {
             minifyEnabled false
