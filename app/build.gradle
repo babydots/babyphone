@@ -13,8 +13,8 @@ android {
         applicationId "com.serwylo.babyphone"
         minSdkVersion 26
         targetSdkVersion 33
-        versionCode 14
-        versionName "1.1.2"
+        versionCode 15
+        versionName "1.1.3"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
@@ -27,6 +27,13 @@ android {
                 ]
             }
         }
+    }
+
+    lint {
+        // This is from:
+        // Error: When targeting Android 13 or higher, posting a permission requires holding the POST_NOTIFICATIONS permission (usage from com.squareup.picasso.RemoteViewsAction.NotificationAction) [NotificationPermission]
+        // Although we use this library, we don't use the part of the library.
+        disable 'NotificationPermission'
     }
 
     buildTypes {
