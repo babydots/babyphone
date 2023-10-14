@@ -1,2 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources></resources>
+<resources>
+    <string name="theme_light">ڕووناکی</string>
+    <string name="settings__category_display">نیشاندان</string>
+    <string name="default_contact__mum">دایک</string>
+    <string name="contact_list__description">دیفۆڵتەکان لاببە و خزم و هاوڕێیان وەک پەیوەندی زیاد بکە.</string>
+    <string name="theme_dark">تاریک</string>
+    <string name="edit_contact__name">ناو</string>
+    <string name="edit_contact__confirm_delete_title">سڕینەوە پشتڕاست بکەرەوە</string>
+    <string name="edit_contact__suggestions">ئامۆژگاری: لە وێنەکەدا دەموچاوت لە ناوەڕاستدا بێت. دەنگەکانی تۆمارکردن وەک وەڵامدانەوەی ئاسایی بۆ کۆرپەکەت.</string>
+    <string name="settings__contact">پەیوەندی</string>
+    <string name="settings__theme">ڕووکار</string>
+    <string name="btn__add_contact">تۆمار</string>
+    <string name="btn__lock">داخستن</string>
+    <string name="btn__cancel">ڕەتکردنەوە</string>
+    <string name="edit_contact__confirm_delete_message">ئەم پەیوەندییە لاببە بە وێنە و تۆمارەکانیانەوە؟</string>
+    <string name="settings__category_phone">تەلەفۆن</string>
+    <string name="btn__stop_recording_sound">تۆمارکردن بوەستێنە</string>
+    <string name="btn__play_sound">ده‌نگه‌كه‌ لێیە</string>
+    <string name="theme_colours">ڕەنگا و ڕەنگ</string>
+    <string name="whats_new">هەواڵەکان</string>
+    <string name="edit_contact__unable_to_open_camera_app">نەیتوانی کامێرا بکاتەوە</string>
+    <string name="edit_contact__confirm_delete_recording_message">ئەم تۆمارە لاببە؟</string>
+    <string name="whats_new__title">هەواڵەکان</string>
+    <string name="contact_list__default_contact">دیفۆڵتەکان</string>
+    <string name="whats_new__continue">بەردەوام بوون</string>
+    <string name="settings">ڕێکخستنەکان</string>
+    <string name="default_contact__baby">منداڵ</string>
+    <string name="app_name">مۆبایلی منداڵ</string>
+    <string name="settings__at_least_one_contact_requried">بەلایەنی کەمەوە یەک پەیوەندی پێویستە.</string>
+    <string name="btn__record_sound">تۆمار</string>
+    <string name="default_contact__dad">باوک</string>
+    <string name="btn__delete">سڕینەوە</string>
+</resources>
