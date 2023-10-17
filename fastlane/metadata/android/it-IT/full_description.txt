@@ -1,0 +1,10 @@
+Al tuo bambino piace parlare al telefono con parenti e amici? Si rattristano quando non c'è nessuno libero di parlare con loro?
+
+Installa questa finta app per telefono per consentire loro di ascoltare e parlare con un altro bambino dall'altra parte del telefono che balbetta.
+
+Ancora nelle prime fasi di sviluppo. Alcune idee per miglioramenti futuri includono:
+* Registra il tuo audio in modo che i tuoi piccoli possano sentire i propri cari dalla loro vera famiglia.
+* Ascolta in modo interattivo il microfono e blatera solo quando c'è un periodo di silenzio.
+* Interagisci con altri pulsanti del telefono, come la tastiera, il pulsante di disattivazione audio, ecc.
+
+Si prega di supportare l'ulteriore sviluppo presso gli sponsor GitHub o Liberapay.
