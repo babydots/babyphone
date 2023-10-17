@@ -1,2 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources></resources>
+<resources>
+    <string name="theme_light">Chiaro</string>
+    <string name="settings__category_display">Schermo</string>
+    <string name="default_contact__mum">Mamma</string>
+    <string name="contact_list__description">Rimuovi le impostazioni predefinite e aggiungi parenti e amici come contatti.</string>
+    <string name="theme_dark">Scuro</string>
+    <string name="edit_contact__name">Nome</string>
+    <string name="edit_contact__confirm_delete_title">Confermare la cancellazione</string>
+    <string name="edit_contact__suggestions">Suggerimenti: centra il tuo viso nella foto. Registra i suoni come se rispondessi normalmente al tuo bambino.</string>
+    <string name="settings__contact">Contatto</string>
+    <string name="settings__theme">Tema</string>
+    <string name="btn__add_contact">Documentazione</string>
+    <string name="btn__lock">Blocco</string>
+    <string name="btn__cancel">Cancella</string>
+    <string name="edit_contact__confirm_delete_message">Rimuovere questo contatto includendo la sua immagine e le registrazioni\?</string>
+    <string name="settings__category_phone">Telefono</string>
+    <string name="btn__stop_recording_sound">Interrompi la registrazione</string>
+    <string name="btn__play_sound">Riprodurre l\'audio</string>
+    <string name="theme_colours">Arcobaleno</string>
+    <string name="whats_new">Notizia</string>
+    <string name="edit_contact__unable_to_open_camera_app">Impossibile aprire la fotocamera</string>
+    <string name="edit_contact__confirm_delete_recording_message">Rimuovere questa registrazione\?</string>
+    <string name="whats_new__title">Notizia</string>
+    <string name="contact_list__default_contact">Predefinita</string>
+    <string name="whats_new__continue">Continuare</string>
+    <string name="settings">Impostazioni</string>
+    <string name="default_contact__baby">Bimbo/a</string>
+    <string name="app_name">Telefono per bambini</string>
+    <string name="settings__at_least_one_contact_requried">È necessario almeno un contatto.</string>
+    <string name="btn__record_sound">Documentazione</string>
+    <string name="default_contact__dad">Papà</string>
+    <string name="btn__delete">Elimina</string>
+</resources>
