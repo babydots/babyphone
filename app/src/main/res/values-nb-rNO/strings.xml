@@ -26,7 +26,7 @@
     <string name="settings__at_least_one_contact_requried">Telefonen din trenger minst én kontakt tilknyttet.</string>
     <string name="edit_contact__unable_to_open_camera_app">Kunne ikke åpne kamera</string>
     <string name="edit_contact__confirm_delete_title">Bekreft sletting</string>
-    <string name="edit_contact__confirm_delete_message">Fjern denne kontakten\? Bildet og opptakene for vedkommende vil gå tapt.</string>
+    <string name="edit_contact__confirm_delete_message">Vil du fjerne denne kontakten, inkludert bildet og opptakene deres\?</string>
     <string name="edit_contact__confirm_delete_recording_message">Fjern dette opptaket\?</string>
     <string name="whats_new">Nyheter</string>
     <string name="whats_new__title">Nyheter</string>
