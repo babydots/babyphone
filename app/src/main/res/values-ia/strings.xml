@@ -1,2 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources></resources>
+<resources>
+    <string name="whats_new__title">Novas</string>
+    <string name="app_name">Telephono de bebe</string>
+    <string name="theme_colours">Iride</string>
+    <string name="default_contact__baby">Bebe</string>
+    <string name="default_contact__dad">Papa</string>
+    <string name="btn__lock">Blocar</string>
+    <string name="btn__delete">Deler</string>
+    <string name="btn__cancel">Cancellar</string>
+    <string name="settings__theme">Thema</string>
+    <string name="settings__category_phone">Telephono</string>
+    <string name="settings__contact">Contacto</string>
+    <string name="default_contact__mum">Mama</string>
+    <string name="btn__add_contact">Registrar</string>
+    <string name="btn__record_sound">Registrar</string>
+    <string name="btn__stop_recording_sound">Stoppar le registration</string>
+    <string name="btn__play_sound">Reproducer sono</string>
+    <string name="settings__category_display">Monstrar</string>
+    <string name="settings__at_least_one_contact_requried">Al minus un contacto es necessari.</string>
+    <string name="edit_contact__unable_to_open_camera_app">Non poteva aperir le camera</string>
+    <string name="edit_contact__confirm_delete_title">Confirmar le deletion</string>
+    <string name="edit_contact__name">Nomine</string>
+    <string name="contact_list__default_contact">Predefinite</string>
+    <string name="edit_contact__confirm_delete_message">Remover iste contacto incluse su imagine e lor registros?</string>
+    <string name="edit_contact__confirm_delete_recording_message">Remover iste registro?</string>
+    <string name="contact_list__description">Remover le valores predefinite e adder parentes e amicos como contactos.</string>
+    <string name="whats_new">Novas</string>
+    <string name="settings">Parametros</string>
+    <string name="whats_new__continue">Continuar</string>
+    <string name="theme_light">Clar</string>
+    <string name="theme_dark">Obscur</string>
+</resources>
