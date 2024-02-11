@@ -1,2 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources></resources>
+<resources>
+    <string name="app_name">Baby Phone</string>
+    <string name="settings__category_display">Pantalla</string>
+    <string name="settings__theme">Tema</string>
+    <string name="settings__contact">Contactos</string>
+    <string name="settings__at_least_one_contact_requried">Se necesita al menos un contacto.</string>
+    <string name="edit_contact__unable_to_open_camera_app">No se pudo abrir la cámara</string>
+    <string name="edit_contact__confirm_delete_recording_message">¿Eliminar esta grabación?</string>
+    <string name="edit_contact__name">Nombre</string>
+    <string name="edit_contact__suggestions">Consejos: Centra tu cara en la foto. Graba sonidos como los que respondes normalmente a tu bebé.</string>
+    <string name="contact_list__description">Elimine los valores predeterminados y añada familiares y amigos como contactos.</string>
+    <string name="contact_list__default_contact">Por defecto</string>
+    <string name="settings">Ajustes</string>
+    <string name="whats_new">Noticias</string>
+    <string name="whats_new__title">Noticias</string>
+    <string name="whats_new__continue">Continuar</string>
+    <string name="theme_light">Claro</string>
+    <string name="theme_dark">Oscuro</string>
+    <string name="btn__record_sound">Grabar</string>
+    <string name="theme_colours">Arco iris</string>
+    <string name="default_contact__baby">Bebé</string>
+    <string name="default_contact__dad">Papá</string>
+    <string name="default_contact__mum">Mamá</string>
+    <string name="btn__add_contact">Grabar</string>
+    <string name="btn__stop_recording_sound">Dejar de grabar</string>
+    <string name="btn__play_sound">Reproducir sonido</string>
+    <string name="btn__lock">Bloquear</string>
+    <string name="btn__delete">Borrar</string>
+    <string name="btn__cancel">Cancelar</string>
+    <string name="settings__category_phone">Teléfono</string>
+    <string name="edit_contact__confirm_delete_title">Confirmar el borrado</string>
+    <string name="edit_contact__confirm_delete_message">¿Eliminar este contacto incluyendo su imagen y grabaciones?</string>
+</resources>
