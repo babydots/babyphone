@@ -1,0 +1,10 @@
+¿A su hijo le gusta hablar por teléfono con familiares y amigos? ¿Se pone triste cuando no hay nadie libre para hablar con él?
+
+Instala esta aplicación para que escuche y hable con otro niño al otro lado del teléfono.
+
+Aún se encuentra en las primeras fases de desarrollo. Algunas ideas para futuras mejoras incluyen:
+* Grabar tu propio audio para que tus pequeños puedan escuchar a los seres queridos de su familia real.
+* Escuchar interactivamente el micrófono y balbucear sólo cuando haya un periodo de silencio.
+* Interactuar con otros botones del teléfono, como el teclado de marcación, botón de silencio, etc.
+
+Por favor, apoye el desarrollo en GitHub patrocinadores o Liberapay.

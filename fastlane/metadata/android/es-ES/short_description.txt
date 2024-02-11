@@ -1,0 +1,1 @@
+Una aplicación de teléfono simulada para los más pequeños que quieran practicar.
