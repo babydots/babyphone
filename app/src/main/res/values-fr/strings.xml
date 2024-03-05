@@ -31,4 +31,6 @@
     <string name="settings__category_phone">Téléphone</string>
     <string name="settings__at_least_one_contact_requried">Au moins un contact est nécessaire.</string>
     <string name="edit_contact__confirm_delete_recording_message">Supprimer cet enregistrement \?</string>
+    <string name="btn__import_contact">Importer</string>
+    <string name="btn__share">Partager</string>
 </resources>
