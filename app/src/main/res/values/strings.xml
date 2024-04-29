@@ -15,10 +15,12 @@
     <string name="default_contact__mum">Mum</string>
 
     <string name="btn__add_contact">Record</string>
+    <string name="btn__import_contact">Import Contact</string>
     <string name="btn__record_sound">Record</string>
     <string name="btn__stop_recording_sound">Stop Recording</string>
     <string name="btn__play_sound">Play sound</string>
     <string name="btn__lock">Lock</string>
+    <string name="btn__share">Share</string>
     <string name="btn__delete">Delete</string>
     <string name="btn__cancel">Cancel</string>
 
