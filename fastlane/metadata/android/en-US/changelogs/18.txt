@@ -1,0 +1,9 @@
+Translations:
+* Chinese (Simplified) (thanks to @clonewith)
+* Interlingua (thanks to @softinterlingua)
+* Spanish (thanks to @gallegonovato)
+
+Misc:
+ * Bumped target SDK to 34.
+
+Want to see this app in your language? Please join us on Weblate to contribute a translation.
