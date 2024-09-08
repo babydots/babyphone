@@ -1,0 +1,9 @@
+Traductiones:
+* Chinese (Simplificate) (gratias a @clonewith)
+* Interlingua (gratias a @softinterlingua)
+* Espaniol (gratias a @gallegonovato)
+
+Misc:
+ * SDK scopo actualisate al version 34.
+
+Vole tu vider iste application in tu lingua? Jungle te a Weblate pro contribuer un traduction.
