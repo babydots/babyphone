@@ -1,2 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources></resources>
+<resources>
+    <string name="app_name">Dětský telefon</string>
+    <string name="settings">Nastavení</string>
+    <string name="whats_new">Novinky</string>
+    <string name="whats_new__continue">Pokračovat</string>
+    <string name="theme_light">Světlé</string>
+    <string name="theme_dark">Tmavé</string>
+    <string name="default_contact__baby">Dítě</string>
+    <string name="default_contact__dad">Taťka</string>
+    <string name="default_contact__mum">Mamka</string>
+    <string name="theme_colours">Duha</string>
+    <string name="btn__add_contact">Přidat</string>
+    <string name="btn__record_sound">Nahrávat</string>
+    <string name="btn__stop_recording_sound">Zastavit nahrávání</string>
+    <string name="btn__play_sound">Přehrát</string>
+    <string name="btn__lock">Zamknout</string>
+    <string name="btn__delete">Vymazat</string>
+    <string name="btn__cancel">Zrušit</string>
+    <string name="settings__category_display">Zobrazení</string>
+    <string name="settings__theme">Téma</string>
+    <string name="settings__category_phone">Telefon</string>
+    <string name="settings__contact">Kontakt</string>
+    <string name="settings__at_least_one_contact_requried">Je nutný alespoň jeden kontakt.</string>
+    <string name="edit_contact__unable_to_open_camera_app">Nepodařilo se otevřít fotoaparát</string>
+    <string name="edit_contact__confirm_delete_title">Potvrdit vymazání</string>
+    <string name="edit_contact__confirm_delete_message">Odstranit tento kontakt včetně jeho podobizny a záznamů?</string>
+    <string name="edit_contact__confirm_delete_recording_message">Odstranění této nahrávky?</string>
+    <string name="edit_contact__name">Jméno</string>
+    <string name="edit_contact__suggestions">Tipy: Vycentrujte svůj obličej na fotografii. Nahrávejte zvuky, na které obvykle vaše dítě reaguje.</string>
+    <string name="whats_new__title">Novinky</string>
+    <string name="contact_list__default_contact">Výchozí</string>
+    <string name="contact_list__description">Odeberte výchozí nastavení a přidejte příbuzné a přátele jako kontakty.</string>
+</resources>
