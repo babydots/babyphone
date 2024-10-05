@@ -1,0 +1,10 @@
+Překlady:
+* Čínština (zjednodušená) (poděkování @clonewith)
+* Interlingua (poděkování @softinterlingua)
+* Španělština (poděkování @gallegonovato)
+* Čeština (poděkování @Bedami)
+
+Různé:
+ * Cílové SDK bylo zvýšeno na 34.
+
+Chtete vidět tuto aplikaci ve svém jazyce? Přidejte se k nám na Weblate a přispějte svým překladem.

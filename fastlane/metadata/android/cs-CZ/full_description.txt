@@ -1,0 +1,10 @@
+Telefonuje vaše dítě rádo s rodinou a přáteli? A není smutné, když s ním nikdo nemůže mluvit?
+
+Nainstalujte jim tuto aplikaci pro předstírání telefonu, která jim umožní poslouchat a mluvit s jiným batoletem na druhém konci telefonu, které jim odpovídá.
+
+Zatím v rané fázi vývoje. Některé nápady na budoucí vylepšení zahrnují:
+* Nahrávejte své vlastní nahrávky, aby vaše děti mohly slyšet své blízké ze své skutečné rodiny.
+* Interaktivní poslech mikrofonu a zpětné breptání pouze ve chvíli, kdy nastane delší doba ticha.
+* Interakce s dalšími tlačítky telefonu, jako je číselník, tlačítko ztlumení zvuku atd.
+
+Podpořte prosím další vývoj na stránkách sponzorů GitHub nebo Liberapay.
