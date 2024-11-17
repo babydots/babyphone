@@ -1,0 +1,9 @@
+翻译：
+* 中文（简体）（感谢 @clonewith）
+* 国际语 (感谢 @softinterlingua)
+* 西班牙语（感谢 @gallegonovato）
+
+其他：
+* 将 SDK 更新至 34。
+
+想看到自己语言版本的应用程序吗？请在 Weblate 上加入我们，提供翻译。
