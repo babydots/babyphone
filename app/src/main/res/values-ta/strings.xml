@@ -1,2 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources></resources>
+<resources>
+    <string name="btn__stop_recording_sound">பதிவு செய்வதை நிறுத்துங்கள்</string>
+    <string name="btn__play_sound">ஒலி விளையாடுங்கள்</string>
+    <string name="settings__category_phone">தொலைபேசி</string>
+    <string name="settings__contact">தொடர்பு</string>
+    <string name="edit_contact__name">பெயர்</string>
+    <string name="contact_list__default_contact">இயல்புநிலை</string>
+    <string name="app_name">குழந்தை தொலைபேசி</string>
+    <string name="settings">அமைப்புகள்</string>
+    <string name="whats_new">செய்தி</string>
+    <string name="whats_new__title">செய்தி</string>
+    <string name="whats_new__continue">தொடரவும்</string>
+    <string name="theme_light">ஒளி</string>
+    <string name="theme_dark">இருண்ட</string>
+    <string name="theme_colours">ரெயின்போ</string>
+    <string name="default_contact__baby">குழந்தை</string>
+    <string name="default_contact__dad">அப்பா</string>
+    <string name="default_contact__mum">மம்</string>
+    <string name="btn__add_contact">பதிவு</string>
+    <string name="btn__record_sound">பதிவு</string>
+    <string name="btn__lock">பூட்டு</string>
+    <string name="btn__delete">நீக்கு</string>
+    <string name="btn__cancel">ரத்துசெய்</string>
+    <string name="settings__category_display">காட்சி</string>
+    <string name="settings__theme">கருப்பொருள்</string>
+    <string name="settings__at_least_one_contact_requried">குறைந்தது ஒரு தொடர்பு தேவை.</string>
+    <string name="edit_contact__unable_to_open_camera_app">கேமராவைத் திறக்க முடியவில்லை</string>
+    <string name="edit_contact__confirm_delete_title">நீக்குதலை உறுதிப்படுத்தவும்</string>
+    <string name="edit_contact__confirm_delete_message">அவர்களின் படம் மற்றும் பதிவுகள் உட்பட இந்த தொடர்பை அகற்றவா?</string>
+    <string name="edit_contact__confirm_delete_recording_message">இந்த பதிவை அகற்றவா?</string>
+    <string name="edit_contact__suggestions">உதவிக்குறிப்புகள்: புகைப்படத்தில் உங்கள் முகத்தை மையப்படுத்தவும். உங்கள் குழந்தைக்கு பொதுவாக பதிலளிப்பது போல் பதிவு தெரிகிறது.</string>
+    <string name="contact_list__description">இயல்புநிலைகளை அகற்றி உறவினர்களையும் நண்பர்களையும் தொடர்புகளாக சேர்க்கவும்.</string>
+</resources>
