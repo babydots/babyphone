@@ -3,12 +3,14 @@
     <string name="btn__play_sound">Ton abspielen</string>
     <string name="default_contact__dad">Papa</string>
     <string name="btn__add_contact">Aufzeichnen</string>
+    <string name="btn__import_contact">Importieren</string>
     <string name="settings__category_display">Bildschirm</string>
     <string name="settings__contact">Kontakt</string>
     <string name="whats_new">Nachrichten</string>
     <string name="whats_new__title">Nachrichten</string>
     <string name="whats_new__continue">Weiter</string>
     <string name="theme_light">Licht</string>
+    <string name="btn__share">Teilen</string>
     <string name="btn__delete">Löschen</string>
     <string name="theme_dark">Dunkel</string>
     <string name="settings__category_phone">Telefon</string>
