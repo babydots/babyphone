@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="theme_light">Светлый</string>
+    <string name="theme_light">Светлая</string>
     <string name="settings__category_display">Экран</string>
     <string name="default_contact__mum">Мама</string>
     <string name="contact_list__description">Удалите значения по умолчанию и добавьте родственников и друзей в качестве контактов.</string>
-    <string name="theme_dark">Темный</string>
+    <string name="theme_dark">Тёмная</string>
     <string name="edit_contact__name">Имя</string>
     <string name="edit_contact__confirm_delete_title">Подтвердить удаление</string>
     <string name="edit_contact__suggestions">Подсказки: Центрируйте ваше лицо на фотографии. Записывайте звуки словно просто отвечаете вашему ребёнку.</string>
