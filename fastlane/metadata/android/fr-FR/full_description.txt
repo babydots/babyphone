@@ -1,0 +1,10 @@
+Votre petit aime-t-il parler à sa famille et à ses amis au téléphone ? Est-ce qu’ils sont tristes quand personne n’est libre pour leur parler ?
+
+Installez cette application de téléphone fictif pour leur permettre d’écouter et de parler à un autre tout-petit à l’autre bout du téléphone en babillant vers eux.
+
+Encore aux premiers stades de développement. Certaines idées pour des améliorations futures incluent :
+* Enregistrer votre propre audio afin que vos petits puissent entendre leurs proches de leur vraie famille.
+* Écouter le microphone de manière interactive et ne babiller que lorsqu’il y a une période de silence.
+* Interagir avec d’autres boutons du téléphone, comme le pavé numérique, le bouton de sourdine, etc.
+
+Veuillez soutenir le développement ultérieur via les sponsors GitHub ou Liberapay.

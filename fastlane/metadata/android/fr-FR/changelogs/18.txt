@@ -1,0 +1,9 @@
+Traductions :
+* Chinois (simplifié) (merci à @clonewith)
+* Interlingua (grâce à @softinterlingua)
+* Espagnol (merci à @gallegonovato)
+
+Divers :
+ * Cible SDK augmentée à 34.
+
+Vous voulez voir cette application dans votre langue ? Veuillez nous rejoindre sur Weblate pour contribuer à une traduction.
