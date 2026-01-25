@@ -1,3 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="settings">Configurações</string>
+    <string name="whats_new">Novidades</string>
+    <string name="whats_new__title">Novidades</string>
+    <string name="whats_new__continue">Continuar</string>
+    <string name="theme_light">Claro</string>
+    <string name="theme_dark">Escuro</string>
+    <string name="theme_colours">Arco-íris</string>
+    <string name="default_contact__baby">Bebê</string>
+    <string name="default_contact__dad">Pai</string>
+    <string name="default_contact__mum">Mãe</string>
+    <string name="edit_contact__name">Nome</string>
+    <string name="settings__theme">Tema</string>
+    <string name="settings__category_phone">Telefone</string>
+    <string name="settings__contact">Contato</string>
+    <string name="settings__at_least_one_contact_requried">É necessário ter pelo menos um contato.</string>
+    <string name="edit_contact__unable_to_open_camera_app">Não foi possível abrir a câmera</string>
+    <string name="edit_contact__confirm_delete_title">Confirmar exclusão</string>
+    <string name="edit_contact__confirm_delete_message">Excluir esse contato incluindo sua imagem e gravações?</string>
+    <string name="edit_contact__confirm_delete_recording_message">Deseja remover esta gravação?</string>
+    <string name="contact_list__default_contact">Padrão</string>
+    <string name="app_name">Telefone do Bebê</string>
+    <string name="btn__delete">Excluir</string>
+    <string name="btn__cancel">Cancelar</string>
+    <string name="settings__category_display">Tela</string>
+    <string name="btn__record_sound">Gravar</string>
+    <string name="btn__add_contact">Gravar</string>
+    <string name="btn__stop_recording_sound">Parar Gravação</string>
+    <string name="btn__play_sound">Tocar som</string>
 </resources>
