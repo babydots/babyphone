@@ -28,4 +28,7 @@
     <string name="btn__add_contact">Gravar</string>
     <string name="btn__stop_recording_sound">Parar Gravação</string>
     <string name="btn__play_sound">Tocar som</string>
+    <string name="edit_contact__suggestions">Dicas: Centralize seu rosto na foto. As gravações devem ser como você normalmente responde ao seu bebê.</string>
+    <string name="contact_list__description">Remove os contatos padrões e adiciona parentes e amigos como contatos.</string>
+    <string name="btn__lock">Trancar</string>
 </resources>
