@@ -1,0 +1,10 @@
+O seu pequenino gosta de falar com a família e amigos no telefone? Ele fica triste quando ninguém está livre para falar com ele?
+
+Instale esse app de telefone de mentira para deixar ele ouvir e falar com outra criança do outro lado do telefone.
+
+Ainda está nos primeiros estágios de desenvolvimento. Algumas ideias para melhorias futuras incluem:
+* Grave seus próprios áudios para os seus pequenos ouvirem as pessoas amadas e reais de sua família.
+* Ouvir o microfone de forma interativa e apenas responder após um período de silêncio.
+* Interação com outros botões do telefone, como os números de discagem, botão de silenciar, etc.
+
+Por favor, apoie o desenvolvimento no GitHub Patrocinadores ou pelo Liberapay.
