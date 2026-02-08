@@ -2,4 +2,5 @@
 <resources>
     <string name="default_contact__dad">אבא</string>
     <string name="default_contact__mum">אימא</string>
+    <string name="settings">הגדרות</string>
 </resources>
