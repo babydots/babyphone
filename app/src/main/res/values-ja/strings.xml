@@ -1,3 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="app_name">ベビーフォン</string>
+    <string name="settings">設定</string>
+    <string name="whats_new">ニュース</string>
+    <string name="whats_new__title">ニュース</string>
+    <string name="whats_new__continue">次へ</string>
+    <string name="theme_light">ライト</string>
+    <string name="theme_dark">ダーク</string>
+    <string name="theme_colours">虹色</string>
+    <string name="default_contact__baby">赤ちゃん</string>
+    <string name="default_contact__dad">お父さん</string>
+    <string name="default_contact__mum">お母さん</string>
+    <string name="btn__add_contact">録音</string>
+    <string name="btn__stop_recording_sound">録音を停止</string>
+    <string name="btn__play_sound">再生</string>
+    <string name="btn__lock">ロック</string>
+    <string name="btn__delete">削除</string>
+    <string name="btn__cancel">キャンセル</string>
+    <string name="settings__category_display">画面</string>
+    <string name="settings__theme">テーマ</string>
+    <string name="settings__category_phone">電話</string>
+    <string name="settings__contact">連絡</string>
+    <string name="settings__at_least_one_contact_requried">1つ以上の連絡先が必要</string>
+    <string name="edit_contact__unable_to_open_camera_app">カメラを起動できませんでした</string>
+    <string name="edit_contact__confirm_delete_title">削除確認</string>
+    <string name="edit_contact__confirm_delete_recording_message">この録音データを削除していいですか?</string>
+    <string name="edit_contact__name">名前</string>
+    <string name="contact_list__default_contact">デフォルト</string>
 </resources>
