@@ -31,4 +31,6 @@
     <string name="whats_new">Nyheter</string>
     <string name="whats_new__title">Nyheter</string>
     <string name="contact_list__description">Legg til slektninger og venner og skru så av de forvalgte kontaktene for en mer personlig telefonopplevelse. Trykk på din tilpassede profil for å redigere den. Forvalg kan ikke redigeres, kun skrus av.</string>
+    <string name="btn__import_contact">Importere</string>
+    <string name="btn__share">Dele</string>
 </resources>
