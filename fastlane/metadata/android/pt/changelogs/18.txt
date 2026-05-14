@@ -1,0 +1,9 @@
+Traduções:
+* Chinês (Simplificado) (agradecimentos a @clonewith)
+* Interlingua (agradecimentos a @softinterlingua)
+* Espanhol (agradecimentos a @gallegonovato)
+
+Diversos:
+ * SDK atualizado para a versão 34.
+
+Gostaria de ver essa app no seu idioma? Por favor, junte-se a nós no Weblate para contribuir com a tradução.
