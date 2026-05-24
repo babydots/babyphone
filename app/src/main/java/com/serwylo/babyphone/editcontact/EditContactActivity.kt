@@ -15,6 +15,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.content.res.AppCompatResources
 import androidx.core.app.ActivityCompat
 import androidx.core.app.NavUtils
+import androidx.core.net.toUri
 import androidx.core.widget.addTextChangedListener
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
@@ -49,6 +50,7 @@ class EditContactActivity : AppCompatActivity() {
 
     companion object {
         const val CONTACT_ID = "contactId"
+        const val IMPORT_CONTACT_URI = "importContactUri"
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -80,6 +82,14 @@ class EditContactActivity : AppCompatActivity() {
         setSupportActionBar(binding.toolbar)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         binding.toolbar.setNavigationOnClickListener { NavUtils.navigateUpFromSameTask(this) }
+    }
+
+    override fun onPostCreate(savedInstanceState: Bundle?) {
+        super.onPostCreate(savedInstanceState)
+
+        intent.extras?.getString(IMPORT_CONTACT_URI)?.also {
+            viewModel.importContactFromZipFile(it.toUri())
+        }
     }
 
     private fun setup() {
@@ -149,8 +159,24 @@ class EditContactActivity : AppCompatActivity() {
             R.id.delete -> {
                 onDeleteContact()
             }
+
+            R.id.share -> {
+                onShareContact()
+            }
         }
         return super.onOptionsItemSelected(item)
+    }
+
+    private fun onShareContact() {
+        lifecycleScope.launch {
+            val zipUri = viewModel.shareContact()
+
+            val sendIntent = Intent()
+            sendIntent.action = Intent.ACTION_SEND
+            sendIntent.putExtra(Intent.EXTRA_STREAM, zipUri)
+            sendIntent.type = "application/zip"
+            startActivity(sendIntent)
+        }
     }
 
     private fun maybeShowPhoto(path: String) {

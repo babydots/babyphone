@@ -31,4 +31,6 @@
     <string name="btn__cancel">Annuleren</string>
     <string name="settings__theme">Thema</string>
     <string name="settings__category_phone">Telefoon</string>
+    <string name="btn__import_contact">Importeren</string>
+    <string name="btn__share">Deel</string>
 </resources>
