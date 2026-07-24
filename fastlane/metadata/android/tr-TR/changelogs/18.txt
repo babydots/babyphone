@@ -1,0 +1,9 @@
+Çeviriler:
+* Çince (Basitleştirilmiş) (teşekkürler @clonewith)
+* İnterlingua (teşekkürler @softinterlingua)
+* İspanyolca (teşekkürler @gallegonovato)
+
+Çeşitli:
+ * Hedef SDK sürümü 34'e yükseltildi.
+
+Bu uygulamayı kendi dilinizde görmek ister misiniz? Lütfen Weblate'e katılarak çevirilere katkıda bulunun.

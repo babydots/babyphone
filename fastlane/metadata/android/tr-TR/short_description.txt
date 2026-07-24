@@ -1,0 +1,1 @@
+Alıştırma yapmak isteyen minikler için bir oyuncak telefon uygulaması.

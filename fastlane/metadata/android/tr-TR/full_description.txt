@@ -1,0 +1,10 @@
+Çocuğunuz telefonda aile üyeleriyle ve arkadaşlarıyla konuşmayı seviyor mu? Konuşacak kimse olmadığında üzülüyor mu?
+
+Bu oyuncak telefon uygulamasını kurarak, çocuğunuzun telefonun diğer ucundaki başka bir küçük çocukla konuşup, onun da ona mırıldanarak cevap vermesini sağlayın.
+
+Uygulama henüz geliştirilme aşamasındadır. Gelecekte yapılacak iyileştirmeler için bazı fikirler şunlardır:
+* Kendi sesinizi kaydedin, böylece çocuğunuz gerçek ailesinden sevdiklerinin sesini duyabilir.
+* Mikrofonu etkileşimli olarak dinleyin ve yalnızca sessizlik olduğu zamanlarda karşılık verin.
+* Tuş takımı, sessize alma düğmesi vb. gibi diğer telefon düğmeleriyle etkileşim kurun.
+
+Lütfen GitHub sponsorları veya Liberapay aracılığıyla uygulamanın geliştirilmesine destek olun.
