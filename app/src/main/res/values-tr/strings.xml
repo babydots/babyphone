@@ -1,3 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="app_name">Bebek Telefonu</string>
+    <string name="settings">Ayarlar</string>
+    <string name="whats_new">Yenilikler</string>
+    <string name="whats_new__title">Yenilikler</string>
+    <string name="whats_new__continue">Devam et</string>
+    <string name="theme_light">Açık</string>
+    <string name="theme_dark">Koyu</string>
+    <string name="theme_colours">Gökkuşağı</string>
+    <string name="default_contact__baby">Bebek</string>
+    <string name="default_contact__dad">Baba</string>
+    <string name="default_contact__mum">Anne</string>
+    <string name="btn__add_contact">Kaydet</string>
+    <string name="btn__record_sound">Kaydet</string>
+    <string name="btn__stop_recording_sound">Kaydı Durdur</string>
+    <string name="btn__play_sound">Ses oynat</string>
+    <string name="btn__lock">Kilitle</string>
+    <string name="btn__delete">Sil</string>
+    <string name="btn__cancel">İptal</string>
+    <string name="settings__category_display">Görünüm</string>
+    <string name="settings__theme">Tema</string>
+    <string name="settings__category_phone">Telefon</string>
+    <string name="settings__contact">Kişi</string>
+    <string name="settings__at_least_one_contact_requried">En az bir kişi gerekli.</string>
+    <string name="edit_contact__unable_to_open_camera_app">Kamera açılamadı</string>
+    <string name="edit_contact__confirm_delete_title">Silmeyi onayla</string>
+    <string name="edit_contact__confirm_delete_message">Bu kişi, fotoğrafı ve kayıtlarıyla birlikte silinsin mi?</string>
+    <string name="edit_contact__confirm_delete_recording_message">Bu kayıt silinsin mi?</string>
+    <string name="edit_contact__name">Ad</string>
+    <string name="edit_contact__suggestions">İpuçları: Yüzünüzü fotoğrafın ortasına yerleştirin. Bebeğinize normalde verdiğiniz tepkiler gibi sesler kaydedin.</string>
+    <string name="contact_list__description">Öntanımlıları kaldırın ve akrabalarınızı ve arkadaşlarınızı kişi olarak ekleyin.</string>
+    <string name="contact_list__default_contact">Öntanımlı</string>
 </resources>
