@@ -1,0 +1,9 @@
+Übersetzungen:
+* Chinesisch (Vereinfacht) (danke an @clonewith)
+* Interlingua (danke an @softinterlingua)
+* Spanisch (danke an @gallegonovato)
+
+Sonstiges:
+ * Ziel-SDK auf 34 erhöht
+
+Möchten Sie diese App in Ihrer Sprache sehen? Helfen Sie uns auf Weblate bei der Übersetzung.
